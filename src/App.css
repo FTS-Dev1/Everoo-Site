@@ -1,0 +1,83 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+:where(.css-dev-only-do-not-override-2q8sxy).ant-steps.ant-steps-label-vertical .ant-steps-item-tail {
+  margin-inline-start: 63px;
+  padding: 18px 31px;
+
+}
+
+:where(.css-dev-only-do-not-override-2q8sxy).ant-steps .ant-steps-item-finish>.ant-steps-item-container>.ant-steps-item-tail::after {
+  background-color: #5E9894
+  ;
+}
+
+:where(.css-dev-only-do-not-override-2q8sxy).ant-steps .ant-steps-item:not(.ant-steps-item-active)>.ant-steps-item-container[role='button']:hover .ant-steps-item-title, :where(.css-dev-only-do-not-override-2q8sxy).ant-steps .ant-steps-item:not(.ant-steps-item-active)>.ant-steps-item-container[role='button']:hover .ant-steps-item-subtitle, :where(.css-dev-only-do-not-override-2q8sxy).ant-steps .ant-steps-item:not(.ant-steps-item-active)>.ant-steps-item-container[role='button']:hover .ant-steps-item-description {
+  color: #5E9894;
+}
+
+:where(.css-dev-only-do-not-override-2q8sxy).ant-steps .ant-steps-item-title {
+  color: #5E9894;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+:where(.css-dev-only-do-not-override-2q8sxy).ant-steps .ant-steps-item-process>.ant-steps-item-container>.ant-steps-item-content>.ant-steps-item-title {
+  color: #5E9894;
+}
+
+:where(.css-dev-only-do-not-override-2q8sxy).ant-steps .ant-steps-item-finish>.ant-steps-item-container>.ant-steps-item-content>.ant-steps-item-title {
+  color: #5E9894;
+}
+:where(.css-dev-only-do-not-override-2q8sxy).ant-steps .ant-steps-item-wait>.ant-steps-item-container>.ant-steps-item-tail::after {
+  background-color: #A1AEBE;
+}
+
+:where(.css-dev-only-do-not-override-2q8sxy).ant-select-single {
+  height: 59px;
+}
+
+:where(.css-dev-only-do-not-override-2q8sxy).ant-space-gap-col-small {
+  justify-content: space-between;
+  display: flex;
+}
+.ant-dropdown-trigger{
+  width: 50%;
+}
