@@ -12,9 +12,6 @@ const { Option } = Select;
 
 
 
-
-
-
 const ContactForm = ({ allEvents, formData, enteringData, selectedEvent, selectingEvent, nextPage, submitForm }) => {
 
 
