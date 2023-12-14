@@ -1,5 +1,9 @@
 .App {
   text-align: center;
+  background: url('../src/Assets/Images/everoo-bg.png') no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .App-logo {
@@ -32,6 +36,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -45,11 +50,12 @@
 }
 
 :where(.css-dev-only-do-not-override-2q8sxy).ant-steps .ant-steps-item-finish>.ant-steps-item-container>.ant-steps-item-tail::after {
-  background-color: #5E9894
-  ;
+  background-color: #5E9894;
 }
 
-:where(.css-dev-only-do-not-override-2q8sxy).ant-steps .ant-steps-item:not(.ant-steps-item-active)>.ant-steps-item-container[role='button']:hover .ant-steps-item-title, :where(.css-dev-only-do-not-override-2q8sxy).ant-steps .ant-steps-item:not(.ant-steps-item-active)>.ant-steps-item-container[role='button']:hover .ant-steps-item-subtitle, :where(.css-dev-only-do-not-override-2q8sxy).ant-steps .ant-steps-item:not(.ant-steps-item-active)>.ant-steps-item-container[role='button']:hover .ant-steps-item-description {
+:where(.css-dev-only-do-not-override-2q8sxy).ant-steps .ant-steps-item:not(.ant-steps-item-active)>.ant-steps-item-container[role='button']:hover .ant-steps-item-title,
+:where(.css-dev-only-do-not-override-2q8sxy).ant-steps .ant-steps-item:not(.ant-steps-item-active)>.ant-steps-item-container[role='button']:hover .ant-steps-item-subtitle,
+:where(.css-dev-only-do-not-override-2q8sxy).ant-steps .ant-steps-item:not(.ant-steps-item-active)>.ant-steps-item-container[role='button']:hover .ant-steps-item-description {
   color: #5E9894;
 }
 
@@ -66,6 +72,7 @@
 :where(.css-dev-only-do-not-override-2q8sxy).ant-steps .ant-steps-item-finish>.ant-steps-item-container>.ant-steps-item-content>.ant-steps-item-title {
   color: #5E9894;
 }
+
 :where(.css-dev-only-do-not-override-2q8sxy).ant-steps .ant-steps-item-wait>.ant-steps-item-container>.ant-steps-item-tail::after {
   background-color: #A1AEBE;
 }
@@ -78,6 +85,26 @@
   justify-content: space-between;
   display: flex;
 }
-.ant-dropdown-trigger{
+
+.ant-dropdown-trigger {
   width: 50%;
+}
+
+:where(.css-dev-only-do-not-override-2q8sxy).ant-select:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer):hover .ant-select-selector {
+  border-color: #5E9894;
+}
+
+:where(.css-dev-only-do-not-override-2q8sxy).ant-input-affix-wrapper:hover {
+  border-color: #5E9894;
+}
+
+:where(.css-dev-only-do-not-override-2q8sxy).ant-input-affix-wrapper:focus, :where(.css-dev-only-do-not-override-2q8sxy).ant-input-affix-wrapper:focus-within {
+  border-color: #5E9894;
+}
+
+.ant-select-focused{
+  border-color: #5E9894;
+}
+.ant-select-active{
+  border-color: #5E9894;
 }
