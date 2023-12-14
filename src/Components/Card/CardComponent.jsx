@@ -11,7 +11,7 @@ import guest from '../../Assets/svgs/guest.svg'
 
 
 
-const CardComponent = ({ data, nextPage, serviceName, selectedService, selectingService, formData, bill }) => {
+const CardComponent = ({ data, nextPage, serviceName, selectedService, selectingService, formData, bill, selectedEvent, selectedLocation, selectedRange }) => {
     const items = [
         {
             label: '1st menu item',
@@ -39,17 +39,19 @@ const CardComponent = ({ data, nextPage, serviceName, selectedService, selecting
                         <Dropdown
                             className='w-80'
                             menu={{
-                                items,
+                                items: [
+                                    {
+                                        label: selectedEvent?.name,
+                                        key: '0',
+                                    }
+                                ]
                             }}
-                            trigger={['click']}
                         >
 
-                            <a onClick={(e) => e.preventDefault()} >
-                                <Space>
-                                    Art des Ereignisses
-                                    <DownOutlined />
-                                </Space>
-                            </a>
+                            <Space>
+                                Art des Ereignisses
+                                <DownOutlined />
+                            </Space>
                         </Dropdown>
                     </div>
                     <div className='flex items-start gap-5'>
@@ -57,17 +59,18 @@ const CardComponent = ({ data, nextPage, serviceName, selectedService, selecting
                         <Dropdown
                             className='w-80'
                             menu={{
-                                items,
+                                items: [
+                                    {
+                                        label: selectedLocation?.name,
+                                        key: '0',
+                                    }
+                                ],
                             }}
-                            trigger={['click']}
                         >
-
-                            <a onClick={(e) => e.preventDefault()} >
-                                <Space>
-                                    Stadt
-                                    <DownOutlined />
-                                </Space>
-                            </a>
+                            <Space>
+                                Stadt
+                                <DownOutlined />
+                            </Space>
                         </Dropdown>
                     </div>
                     <div className='flex items-start gap-5'>
@@ -75,21 +78,21 @@ const CardComponent = ({ data, nextPage, serviceName, selectedService, selecting
                         <Dropdown
                             className='w-80'
                             menu={{
-                                items,
+                                items: [
+                                    {
+                                        label: `${selectedRange?.min} ---- ${selectedRange?.max}`,
+                                        key: '0',
+                                    }
+                                ],
                             }}
-                            trigger={['click']}
                         >
 
-                            <a onClick={(e) => e.preventDefault()} >
-                                <Space>
-                                    Gast Wut
-                                    <DownOutlined />
-                                </Space>
-                            </a>
+                            <Space>
+                                Gast Wut
+                                <DownOutlined />
+                            </Space>
                         </Dropdown>
                     </div>
-
-
                 </div>
                 <div>
                     <BudgetCard budget={formData?.budget} bill={bill} />

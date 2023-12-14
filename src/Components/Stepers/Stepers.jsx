@@ -172,52 +172,52 @@ const Stepers = () => {
         {
             title: 'Verpflegung',
             icon: <img src={catering2} alt="" width={40} height={50} />,
-            content: <CardComponent data={selectedEvent?.cities[0]["Catering"]} nextPage={nextPage} selectedService={selectedServices["Catering"]} selectingService={selectingService} serviceName="Catering" bill={bill} formData={formData} />,
+            content: <CardComponent data={selectedEvent?.cities[0]["Catering"]} nextPage={nextPage} selectedService={selectedServices["Catering"]} selectingService={selectingService} serviceName="Catering" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
         },
         {
             title: 'Getränk',
             icon: <img src={beverage} alt="" width={40} />,
-            content: <CardComponent data={selectedEvent?.cities[0]["Beverage"]} nextPage={nextPage} selectedService={selectedServices["Beverage"]} selectingService={selectingService} serviceName="Beverage" bill={bill} formData={formData} />,
+            content: <CardComponent data={selectedEvent?.cities[0]["Beverage"]} nextPage={nextPage} selectedService={selectedServices["Beverage"]} selectingService={selectingService} serviceName="Beverage" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
         },
         {
             title: 'Pendelverkehr',
             icon: <img src={shuttle} alt="" width={40} />,
-            content: <CardComponent data={selectedEvent?.cities[0]["Shuttle"]} nextPage={nextPage} selectedService={selectedServices["Shuttle"]} selectingService={selectingService} serviceName="Shuttle" bill={bill} formData={formData} />,
+            content: <CardComponent data={selectedEvent?.cities[0]["Shuttle"]} nextPage={nextPage} selectedService={selectedServices["Shuttle"]} selectingService={selectingService} serviceName="Shuttle" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
         },
         {
             title: 'Staff',
             icon: <img src={staff} alt="" width={40} />,
-            content: <CardComponent data={selectedEvent?.cities[0]["Staff"]} nextPage={nextPage} selectedService={selectedServices["Staff"]} selectingService={selectingService} serviceName="Staff" bill={bill} formData={formData} />,
+            content: <CardComponent data={selectedEvent?.cities[0]["Staff"]} nextPage={nextPage} selectedService={selectedServices["Staff"]} selectingService={selectingService} serviceName="Staff" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
         },
         {
             title: 'Ausstattung',
             icon: <img src={ausatting} alt="" width={40} />,
-            content: <CardComponent data={selectedEvent?.cities[0]["Ausstattung"]} nextPage={nextPage} selectedService={selectedServices["Ausstattung"]} selectingService={selectingService} serviceName="Ausstattung" bill={bill} formData={formData} />,
+            content: <CardComponent data={selectedEvent?.cities[0]["Ausstattung"]} nextPage={nextPage} selectedService={selectedServices["Ausstattung"]} selectingService={selectingService} serviceName="Ausstattung" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
         },
         {
             title: 'Hotel Management',
             icon: <img src={hotelService} alt="" width={40} />,
-            content: <CardComponent data={selectedEvent?.cities[0]["Hotelmanagement"]} nextPage={nextPage} selectedService={selectedServices["Hotelmanagement"]} selectingService={selectingService} serviceName="Hotelmanagement" bill={bill} formData={formData} />,
+            content: <CardComponent data={selectedEvent?.cities[0]["Hotelmanagement"]} nextPage={nextPage} selectedService={selectedServices["Hotelmanagement"]} selectingService={selectingService} serviceName="Hotelmanagement" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
         },
         {
             title: 'Gegenwart',
             icon: <img src={hotelService} alt="" width={40} />,
-            content: <CardComponent data={selectedEvent?.cities[0]["Prasente"]} nextPage={nextPage} selectedService={selectedServices["Prasente"]} selectingService={selectingService} serviceName="Prasente" bill={bill} formData={formData} />,
+            content: <CardComponent data={selectedEvent?.cities[0]["Prasente"]} nextPage={nextPage} selectedService={selectedServices["Prasente"]} selectingService={selectingService} serviceName="Prasente" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
         },
         {
             title: 'Veranstaltungstechnik',
             icon: <img src={eventTech} alt="" width={40} />,
-            content: <CardComponent data={selectedEvent?.cities[0]["Veranstaltungstechnik"]} nextPage={nextPage} selectedService={selectedServices["Veranstaltungstechnik"]} selectingService={selectingService} serviceName="Veranstaltungstechnik" bill={bill} formData={formData} />,
+            content: <CardComponent data={selectedEvent?.cities[0]["Veranstaltungstechnik"]} nextPage={nextPage} selectedService={selectedServices["Veranstaltungstechnik"]} selectingService={selectingService} serviceName="Veranstaltungstechnik" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
         },
         {
             title: 'Event-Modul',
             icon: <img src={eventModule} alt="" width={40} />,
-            content: <CardComponent data={selectedEvent?.cities[0]["Eventmodule"]} nextPage={nextPage} selectedService={selectedServices["Eventmodule"]} selectingService={selectingService} serviceName="Eventmodule" bill={bill} formData={formData} />,
+            content: <CardComponent data={selectedEvent?.cities[0]["Eventmodule"]} nextPage={nextPage} selectedService={selectedServices["Eventmodule"]} selectingService={selectingService} serviceName="Eventmodule" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
         },
         {
             title: 'Dekoration',
             icon: <img src={decoration} alt="" width={40} />,
-            content: <CardComponent data={selectedEvent?.cities[0]["Dekoration"]} nextPage={nextPage} selectedService={selectedServices["Dekoration"]} selectingService={selectingService} serviceName="Dekoration" bill={bill} formData={formData} />,
+            content: <CardComponent data={selectedEvent?.cities[0]["Dekoration"]} nextPage={nextPage} selectedService={selectedServices["Dekoration"]} selectingService={selectingService} serviceName="Dekoration" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
         },
         {
             title: 'Personal Info',

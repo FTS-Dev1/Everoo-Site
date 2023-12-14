@@ -122,7 +122,7 @@
   background-color: #E0FFFC;
 }
 
-:where(.css-dev-only-do-not-override-2q8sxy).ant-layout-header {
+.ant-layout-header {
   height: 64px;
   padding: 0px;
   color: rgba(0, 0, 0, 0.88);
@@ -154,7 +154,8 @@
   transition: all 0.3s ease 0s;
 }
 
-:where(.css-dev-only-do-not-override-2q8sxy).ant-menu-light, :where(.css-dev-only-do-not-override-2q8sxy).ant-menu-light>.ant-menu {
+.ant-menu-light,
+.ant-menu-light>.ant-menu {
   color: rgba(0, 0, 0, 0.88);
   background: transparent;
 }
@@ -165,7 +166,10 @@
   border-bottom: none;
 }
 
-:where(.css-dev-only-do-not-override-2q8sxy).ant-menu-light.ant-menu-horizontal >.ant-menu-item-selected, :where(.css-dev-only-do-not-override-2q8sxy).ant-menu-light>.ant-menu.ant-menu-horizontal >.ant-menu-item-selected, :where(.css-dev-only-do-not-override-2q8sxy).ant-menu-light.ant-menu-horizontal >.ant-menu-submenu-selected, :where(.css-dev-only-do-not-override-2q8sxy).ant-menu-light>.ant-menu.ant-menu-horizontal >.ant-menu-submenu-selected {
+:where(.css-dev-only-do-not-override-2q8sxy).ant-menu-light.ant-menu-horizontal>.ant-menu-item-selected,
+:where(.css-dev-only-do-not-override-2q8sxy).ant-menu-light>.ant-menu.ant-menu-horizontal>.ant-menu-item-selected,
+:where(.css-dev-only-do-not-override-2q8sxy).ant-menu-light.ant-menu-horizontal>.ant-menu-submenu-selected,
+:where(.css-dev-only-do-not-override-2q8sxy).ant-menu-light>.ant-menu.ant-menu-horizontal>.ant-menu-submenu-selected {
   color: #5E9894;
   background-color: transparent;
 }
