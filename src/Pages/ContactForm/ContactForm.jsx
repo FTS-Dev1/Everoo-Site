@@ -12,12 +12,9 @@ const { Option } = Select;
 
 
 
-const ContactForm = ({ allEvents, formData, enteringData, selectedEvent, selectingEvent, nextPage, submitForm }) => {
+const ContactForm = ({ allEvents, formData, enteringData, selectedEvent, selectingEvent, nextPage, submitForm, bill }) => {
 
 
-    const handleFormSubmit = async () => {
-
-    };
     return (
         <div className="container  mt-8">
             <div className='flex items-center mb-4 my-[50px]'>
@@ -72,7 +69,7 @@ const ContactForm = ({ allEvents, formData, enteringData, selectedEvent, selecti
                     value={formData?.phone}
                 /> </div>
             <div className='flex  items-center justify-between'>
-                <BudgetCard />
+                <BudgetCard budget={formData?.budget} bill={bill} />
                 <Button type="primary" className=" px-10  bg-green rounded-full" onClick={submitForm}>Submit</Button>
             </div>
 

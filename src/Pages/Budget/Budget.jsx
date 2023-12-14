@@ -9,7 +9,7 @@ import BudgetCard from '../../Components/Card/BudgetCard';
 import axios from 'axios';
 
 const { Option } = Select;
-const BudgetForm = ({ allEvents, allRanges, formData, enteringData, selectedEvent, selectedRange, selectingEvent, selectingRange, nextPage }) => {
+const BudgetForm = ({ allEvents, allRanges, formData, enteringData, selectedEvent, selectedLocation, selectedRange, selectingEvent, selectingLocation, selectingRange, nextPage, bill }) => {
     const handleFormSubmit = async () => {
 
     };
@@ -51,7 +51,9 @@ const BudgetForm = ({ allEvents, allRanges, formData, enteringData, selectedEven
                 {/* <Select prefix={<img src={eventIcon} width={16} className='mr-3' />} placeholder="Event Locality" className="flex-1 bg-white shadow-md text-left" onChange={(value) => setFormData({ ...formData, eventLocality: value })}>
                 </Select> */}
                 <Select placeholder="Veranstaltungsort" prefix={<EnvironmentOutlined />} className="flex-1 rounded-md bg-white shadow-md text-left  h-[64px]"
+                    value={selectedLocation?._id}
                     options={selectedEvent?.cities?.map(city => ({ value: city?._id, label: city?.name }))}
+                    onChange={selectingLocation}
                 />
             </div>
             <div className="pb-7 flex space-x-12">
@@ -90,7 +92,7 @@ const BudgetForm = ({ allEvents, allRanges, formData, enteringData, selectedEven
                 /> */}
             </div>
             <div className='flex  items-center justify-between pb-5'>
-                <BudgetCard />
+                <BudgetCard budget={formData?.budget} bill={bill} />
                 <Button type="primary" className=" px-10  bg-green rounded-full" onClick={nextPage}>Nächster</Button>
             </div>
 

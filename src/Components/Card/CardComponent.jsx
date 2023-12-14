@@ -11,7 +11,7 @@ import guest from '../../Assets/svgs/guest.svg'
 
 
 
-const CardComponent = ({ data, nextPage }) => {
+const CardComponent = ({ data, nextPage, serviceName, selectedService, selectingService, formData, bill }) => {
     const items = [
         {
             label: '1st menu item',
@@ -92,13 +92,13 @@ const CardComponent = ({ data, nextPage }) => {
 
                 </div>
                 <div>
-                    <BudgetCard />
+                    <BudgetCard budget={formData?.budget} bill={bill} />
                 </div>
             </div>
             <div className='col-span-9'>
                 <div className='px-5  grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16  sm:mb-16  lg:mx-0 lg:max-w-none lg:grid-cols-3'>
                     {data?.map((card, index) => (
-                        <div className='relative cursor-pointer bg-white rounded-2xl text-Dblack shadow-md hover:shadow-2xl hover:border-green' onClick={nextPage}>
+                        <div className={`${selectedService?._id == card?._id ? "relative cursor-pointer bg-[#C8F1F3] rounded-2xl text-Dblack shadow-md shadow-2xl border-green hover:shadow-2xl hover:border-green" : "relative cursor-pointer bg-white rounded-2xl text-Dblack shadow-md hover:shadow-2xl hover:border-green"}`} onClick={() => selectingService(serviceName, card)}>
                             <div className='absolute cardalign'>
                                 <img src={IMAGEURLGEN(card.image)} alt='Image of card' className='w-72 h-48 object-cover rounded-2xl' />
                             </div>

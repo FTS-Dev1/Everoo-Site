@@ -77,7 +77,10 @@ const Stepers = () => {
     const [rangeData, setRangeData] = useState([])
 
     const [selectedEvent, setSelectedEvent] = useState(null)
+    const [selectedLocation, setSelectedLocation] = useState(null)
     const [selectedRange, setSelectedRange] = useState(null)
+
+    const [bill, setBill] = useState(0);
 
     const [formData, setFormData] = useState({
         budget: "",
@@ -113,16 +116,28 @@ const Stepers = () => {
         let findEvent = eventData.find(event => event?._id == id)
         setSelectedEvent(findEvent)
     }
+    const selectingLocation = (id) => {
+        let findLocation = selectedEvent.cities.find(city => city?._id == id)
+        setSelectedLocation(findLocation)
+    }
     const selectingRange = (id) => {
         let findRange = rangeData.find(range => range?._id == id)
-        selectedRange(findRange)
+        setSelectedRange(findRange)
     }
 
     const selectingService = (id, data) => {
-        setSelectedServices({
-            ...selectedServices,
-            [id]: data
-        })
+        if (selectedServices[id] != null && selectedServices[id]._id == data?._id) {
+            setSelectedServices({
+                ...selectedServices,
+                [id]: null
+            })
+        } else {
+            setSelectedServices({
+                ...selectedServices,
+                [id]: data
+            })
+        }
+        nextPage()
     }
 
 
@@ -133,7 +148,9 @@ const Stepers = () => {
     const submitForm = async () => {
         let payload = {
             ...formData,
-            event: selectedEvent?._id
+            event: selectedEvent?._id,
+            city: selectedLocation?._id,
+            bill,
         }
         let res = await CreatOrderAPI(payload)
         if (res.error != null) {
@@ -150,62 +167,62 @@ const Stepers = () => {
         {
             title: 'Budget',
             icon: <img src={catering} alt="" width={40} height={50} />,
-            content: <Budget allEvents={eventData} allRanges={rangeData} selectedEvent={selectedEvent} selectedRange={selectedRange} setSelectedEvent={setSelectedEvent} formData={formData} enteringData={enteringData} selectingEvent={selectingEvent} selectingRange={selectingRange} nextPage={nextPage} />,
+            content: <Budget allEvents={eventData} allRanges={rangeData} selectedEvent={selectedEvent} selectedRange={selectedRange} selectedLocation={selectedLocation} setSelectedEvent={setSelectedEvent} formData={formData} enteringData={enteringData} selectingEvent={selectingEvent} selectingLocation={selectingLocation} selectingRange={selectingRange} nextPage={nextPage} bill={bill} />,
         },
         {
             title: 'Verpflegung',
             icon: <img src={catering2} alt="" width={40} height={50} />,
-            content: <CardComponent data={selectedEvent?.cities[0]["Catering"]} nextPage={nextPage} selectedService={selectedServices["Catering"]} />,
+            content: <CardComponent data={selectedEvent?.cities[0]["Catering"]} nextPage={nextPage} selectedService={selectedServices["Catering"]} selectingService={selectingService} serviceName="Catering" bill={bill} formData={formData} />,
         },
         {
             title: 'Getränk',
             icon: <img src={beverage} alt="" width={40} />,
-            content: <CardComponent data={selectedEvent?.cities[0]["Beverage"]} nextPage={nextPage} selectedService={selectedServices["Beverage"]} />,
+            content: <CardComponent data={selectedEvent?.cities[0]["Beverage"]} nextPage={nextPage} selectedService={selectedServices["Beverage"]} selectingService={selectingService} serviceName="Beverage" bill={bill} formData={formData} />,
         },
         {
             title: 'Pendelverkehr',
             icon: <img src={shuttle} alt="" width={40} />,
-            content: <CardComponent data={selectedEvent?.cities[0]["Shuttle"]} nextPage={nextPage} selectedService={selectedServices["Shuttle"]} />,
+            content: <CardComponent data={selectedEvent?.cities[0]["Shuttle"]} nextPage={nextPage} selectedService={selectedServices["Shuttle"]} selectingService={selectingService} serviceName="Shuttle" bill={bill} formData={formData} />,
         },
         {
             title: 'Staff',
             icon: <img src={staff} alt="" width={40} />,
-            content: <CardComponent data={selectedEvent?.cities[0]["Staff"]} nextPage={nextPage} selectedService={selectedServices["Staff"]} />,
+            content: <CardComponent data={selectedEvent?.cities[0]["Staff"]} nextPage={nextPage} selectedService={selectedServices["Staff"]} selectingService={selectingService} serviceName="Staff" bill={bill} formData={formData} />,
         },
         {
             title: 'Ausstattung',
             icon: <img src={ausatting} alt="" width={40} />,
-            content: <CardComponent data={selectedEvent?.cities[0]["Ausstattung"]} nextPage={nextPage} selectedService={selectedServices["Ausstattung"]} />,
+            content: <CardComponent data={selectedEvent?.cities[0]["Ausstattung"]} nextPage={nextPage} selectedService={selectedServices["Ausstattung"]} selectingService={selectingService} serviceName="Ausstattung" bill={bill} formData={formData} />,
         },
         {
             title: 'Hotel Management',
             icon: <img src={hotelService} alt="" width={40} />,
-            content: <CardComponent data={selectedEvent?.cities[0]["Hotelmanagement"]} nextPage={nextPage} selectedService={selectedServices["Hotelmanagement"]} />,
+            content: <CardComponent data={selectedEvent?.cities[0]["Hotelmanagement"]} nextPage={nextPage} selectedService={selectedServices["Hotelmanagement"]} selectingService={selectingService} serviceName="Hotelmanagement" bill={bill} formData={formData} />,
         },
         {
             title: 'Gegenwart',
             icon: <img src={hotelService} alt="" width={40} />,
-            content: <CardComponent data={selectedEvent?.cities[0]["Prasente"]} nextPage={nextPage} selectedService={selectedServices["Prasente"]} />,
+            content: <CardComponent data={selectedEvent?.cities[0]["Prasente"]} nextPage={nextPage} selectedService={selectedServices["Prasente"]} selectingService={selectingService} serviceName="Prasente" bill={bill} formData={formData} />,
         },
         {
             title: 'Veranstaltungstechnik',
             icon: <img src={eventTech} alt="" width={40} />,
-            content: <CardComponent data={selectedEvent?.cities[0]["Veranstaltungstechnik"]} nextPage={nextPage} selectedService={selectedServices["Veranstaltungstechnik"]} />,
+            content: <CardComponent data={selectedEvent?.cities[0]["Veranstaltungstechnik"]} nextPage={nextPage} selectedService={selectedServices["Veranstaltungstechnik"]} selectingService={selectingService} serviceName="Veranstaltungstechnik" bill={bill} formData={formData} />,
         },
         {
             title: 'Event-Modul',
             icon: <img src={eventModule} alt="" width={40} />,
-            content: <CardComponent data={selectedEvent?.cities[0]["Eventmodule"]} nextPage={nextPage} selectedService={selectedServices["Eventmodule"]} />,
+            content: <CardComponent data={selectedEvent?.cities[0]["Eventmodule"]} nextPage={nextPage} selectedService={selectedServices["Eventmodule"]} selectingService={selectingService} serviceName="Eventmodule" bill={bill} formData={formData} />,
         },
         {
             title: 'Dekoration',
             icon: <img src={decoration} alt="" width={40} />,
-            content: <CardComponent data={selectedEvent?.cities[0]["Dekoration"]} nextPage={nextPage} selectedService={selectedServices["Dekoration"]} />,
+            content: <CardComponent data={selectedEvent?.cities[0]["Dekoration"]} nextPage={nextPage} selectedService={selectedServices["Dekoration"]} selectingService={selectingService} serviceName="Dekoration" bill={bill} formData={formData} />,
         },
         {
             title: 'Personal Info',
             icon: <img src={catering} alt="" width={40} height={50} />,
-            content: <ContactForm allEvents={eventData} selectedEvent={selectedEvent} setSelectedEvent={setSelectedEvent} formData={formData} enteringData={enteringData} selectingEvent={selectingEvent} nextPage={nextPage} submitForm={submitForm} />,
+            content: <ContactForm allEvents={eventData} selectedEvent={selectedEvent} setSelectedEvent={setSelectedEvent} formData={formData} enteringData={enteringData} selectingEvent={selectingEvent} nextPage={nextPage} submitForm={submitForm} bill={bill} />,
         },
     ];
 
@@ -236,6 +253,23 @@ const Stepers = () => {
         gettingAllRanges()
 
     }, [])
+
+    useEffect(() => {
+        let maxRange = 1;
+        let drivedBill = 0;
+        if (selectedRange) {
+            maxRange = selectedRange?.max
+        }
+
+        Object.keys(selectedServices).map(key => {
+            if (selectedServices[key] != null) {
+                drivedBill += Number(maxRange) * Number(selectedServices[key].price)
+            }
+        })
+
+        setBill(drivedBill);
+
+    }, [selectedServices])
 
     return (
         <>
