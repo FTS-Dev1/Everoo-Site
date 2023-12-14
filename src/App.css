@@ -1,5 +1,9 @@
 .App {
   text-align: center;
+  background: url('../src/Assets/Images/everoo-bg.png') no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .App-logo {
@@ -32,11 +36,15 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
 
+.everooContainer {
+  max-width: 84rem;
+}
 
 :where(.css-dev-only-do-not-override-2q8sxy).ant-steps.ant-steps-label-vertical .ant-steps-item-tail {
   margin-inline-start: 63px;
@@ -45,11 +53,12 @@
 }
 
 :where(.css-dev-only-do-not-override-2q8sxy).ant-steps .ant-steps-item-finish>.ant-steps-item-container>.ant-steps-item-tail::after {
-  background-color: #5E9894
-  ;
+  background-color: #5E9894;
 }
 
-:where(.css-dev-only-do-not-override-2q8sxy).ant-steps .ant-steps-item:not(.ant-steps-item-active)>.ant-steps-item-container[role='button']:hover .ant-steps-item-title, :where(.css-dev-only-do-not-override-2q8sxy).ant-steps .ant-steps-item:not(.ant-steps-item-active)>.ant-steps-item-container[role='button']:hover .ant-steps-item-subtitle, :where(.css-dev-only-do-not-override-2q8sxy).ant-steps .ant-steps-item:not(.ant-steps-item-active)>.ant-steps-item-container[role='button']:hover .ant-steps-item-description {
+:where(.css-dev-only-do-not-override-2q8sxy).ant-steps .ant-steps-item:not(.ant-steps-item-active)>.ant-steps-item-container[role='button']:hover .ant-steps-item-title,
+:where(.css-dev-only-do-not-override-2q8sxy).ant-steps .ant-steps-item:not(.ant-steps-item-active)>.ant-steps-item-container[role='button']:hover .ant-steps-item-subtitle,
+:where(.css-dev-only-do-not-override-2q8sxy).ant-steps .ant-steps-item:not(.ant-steps-item-active)>.ant-steps-item-container[role='button']:hover .ant-steps-item-description {
   color: #5E9894;
 }
 
@@ -66,6 +75,7 @@
 :where(.css-dev-only-do-not-override-2q8sxy).ant-steps .ant-steps-item-finish>.ant-steps-item-container>.ant-steps-item-content>.ant-steps-item-title {
   color: #5E9894;
 }
+
 :where(.css-dev-only-do-not-override-2q8sxy).ant-steps .ant-steps-item-wait>.ant-steps-item-container>.ant-steps-item-tail::after {
   background-color: #A1AEBE;
 }
@@ -78,6 +88,87 @@
   justify-content: space-between;
   display: flex;
 }
-.ant-dropdown-trigger{
-  width: 50%;
+
+.ant-dropdown-trigger {
+  width: 85%;
+}
+
+:where(.css-dev-only-do-not-override-2q8sxy).ant-select:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer):hover .ant-select-selector {
+  border-color: #5E9894;
+}
+
+:where(.css-dev-only-do-not-override-2q8sxy).ant-input-affix-wrapper:hover {
+  border-color: #5E9894;
+}
+
+:where(.css-dev-only-do-not-override-2q8sxy).ant-input-affix-wrapper:focus,
+:where(.css-dev-only-do-not-override-2q8sxy).ant-input-affix-wrapper:focus-within {
+  border-color: #5E9894;
+}
+
+.ant-select-focused {
+  border-color: #5E9894;
+}
+
+.ant-select-active {
+  border-color: #5E9894;
+}
+
+:where(.css-dev-only-do-not-override-2q8sxy).ant-select-dropdown .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+  font-weight: 600;
+  background-color: #E0FFFC;
+}
+
+:where(.css-dev-only-do-not-override-2q8sxy).ant-layout-header {
+  height: 64px;
+  padding: 0px;
+  color: rgba(0, 0, 0, 0.88);
+  line-height: 64px;
+  background: transparent;
+}
+
+:where(.css-dev-only-do-not-override-2q8sxy).ant-btn-primary:not(:disabled):not(.ant-btn-disabled):active {
+  color: #fff;
+  background-color: black;
+  min-height: 40px;
+  box-shadow: 0px 15px 20px rgba(1, 1, 1, .2) !important;
+  transform: translateY(-7px);
+}
+
+:where(.css-dev-only-do-not-override-2q8sxy).ant-btn-primary:not(:disabled):not(.ant-btn-disabled):hover {
+  color: #fff;
+  background-color: black;
+  min-height: 40px;
+  box-shadow: 0px 15px 20px rgba(1, 1, 1, .2) !important;
+  transform: translateY(-7px);
+}
+
+:where(.css-dev-only-do-not-override-2q8sxy).ant-btn {
+  color: #fff;
+  background-color: #5E9894;
+  min-height: 40px;
+  box-shadow: 0px 8px 15px rgba(1, 1, 1, .1) !important;
+  transition: all 0.3s ease 0s;
+}
+
+:where(.css-dev-only-do-not-override-2q8sxy).ant-menu-light, :where(.css-dev-only-do-not-override-2q8sxy).ant-menu-light>.ant-menu {
+  color: rgba(0, 0, 0, 0.88);
+  background: transparent;
+}
+
+:where(.css-dev-only-do-not-override-2q8sxy).ant-menu-horizontal {
+  line-height: 46px;
+  border: 0;
+  border-bottom: none;
+}
+
+:where(.css-dev-only-do-not-override-2q8sxy).ant-menu-light.ant-menu-horizontal >.ant-menu-item-selected, :where(.css-dev-only-do-not-override-2q8sxy).ant-menu-light>.ant-menu.ant-menu-horizontal >.ant-menu-item-selected, :where(.css-dev-only-do-not-override-2q8sxy).ant-menu-light.ant-menu-horizontal >.ant-menu-submenu-selected, :where(.css-dev-only-do-not-override-2q8sxy).ant-menu-light>.ant-menu.ant-menu-horizontal >.ant-menu-submenu-selected {
+  color: #5E9894;
+  background-color: transparent;
+}
+
+.ant-steps {
+  line-height: 1.5714285714285714;
+  width: 90%;
+  text-align: initial;
 }

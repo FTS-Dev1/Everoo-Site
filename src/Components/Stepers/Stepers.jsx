@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Steps, Divider } from 'antd';
 import catering from '../../Assets/svgs/catering.svg';
+import catering2 from '../../Assets/svgs/catering1.svg';
 import beverage from '../../Assets/svgs/beverage.svg';
 import shuttle from '../../Assets/svgs/shuttle.svg';
 import staff from '../../Assets/svgs/staff.svg';
@@ -17,6 +18,7 @@ import Budget from '../../Pages/Budget/Budget';
 import ContactForm from '../../Pages/ContactForm/ContactForm';
 import { CreatOrderAPI, GetAllEventsAPI } from 'API/event';
 import { toast } from "react-toastify";
+import NavBar from 'Pages/Header/Header';
 
 
 
@@ -126,17 +128,17 @@ const Stepers = () => {
             content: <Budget allEvents={eventData} selectedEvent={selectedEvent} setSelectedEvent={setSelectedEvent} formData={formData} enteringData={enteringData} selectingEvent={selectingEvent} nextPage={nextPage} />,
         },
         {
-            title: 'Catering',
-            icon: <img src={catering} alt="" width={40} height={50} />,
+            title: 'Verpflegung',
+            icon: <img src={catering2} alt="" width={40} height={50} />,
             content: <CardComponent data={selectedEvent?.cities[0]["Catering"]} nextPage={nextPage} />,
         },
         {
-            title: 'Beverage',
+            title: 'Getränk',
             icon: <img src={beverage} alt="" width={40} />,
             content: <CardComponent data={selectedEvent?.cities[0]["Beverage"]} nextPage={nextPage} />,
         },
         {
-            title: 'Shuttle',
+            title: 'Pendelverkehr',
             icon: <img src={shuttle} alt="" width={40} />,
             content: <CardComponent data={selectedEvent?.cities[0]["Shuttle"]} nextPage={nextPage} />,
         },
@@ -156,22 +158,22 @@ const Stepers = () => {
             content: <CardComponent data={selectedEvent?.cities[0]["Hotelmanagement"]} nextPage={nextPage} />,
         },
         {
-            title: 'Present',
+            title: 'Gegenwart',
             icon: <img src={hotelService} alt="" width={40} />,
             content: <CardComponent data={selectedEvent?.cities[0]["Prasente"]} nextPage={nextPage} />,
         },
         {
-            title: 'Event Technology',
+            title: 'Veranstaltungstechnik',
             icon: <img src={eventTech} alt="" width={40} />,
             content: <CardComponent data={selectedEvent?.cities[0]["Veranstaltungstechnik"]} nextPage={nextPage} />,
         },
         {
-            title: 'Event Module',
+            title: 'Event-Modul',
             icon: <img src={eventModule} alt="" width={40} />,
             content: <CardComponent data={selectedEvent?.cities[0]["Eventmodule"]} nextPage={nextPage} />,
         },
         {
-            title: 'Decoration',
+            title: 'Dekoration',
             icon: <img src={decoration} alt="" width={40} />,
             content: <CardComponent data={selectedEvent?.cities[0]["Dekoration"]} nextPage={nextPage} />,
         },
@@ -203,14 +205,17 @@ const Stepers = () => {
 
     return (
         <>
-            <div className="md:max-w-7xl md:mx-auto md:pt-6 h-screen">
-                <Steps current={current} onChange={onChange} labelPlacement="vertical">
-                    {steps.map((step, index) => (
-                        <Step key={index} title={step.title} icon={step.icon} />
-                    ))}
-                </Steps>
-                <Divider />
-                <div className="steps-content">{steps[current].content}</div>
+            <div className="everooContainer md:mx-auto md:pt-6 h-screen">
+                <NavBar />
+                <div className='pt-20'>
+                    <Steps current={current} onChange={onChange} labelPlacement="vertical">
+                        {steps.map((step, index) => (
+                            <Step key={index} title={step.title} icon={step.icon} />
+                        ))}
+                    </Steps>
+                    <div className="steps-content">{steps[current].content}</div>
+                </div>
+
             </div>
         </>
     );

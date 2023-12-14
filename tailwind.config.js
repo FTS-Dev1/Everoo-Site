@@ -12,7 +12,8 @@ module.exports = {
         lightY: "#FFF5C9",
         grey: "#566476",
         lightGrey: "#ECECEC",
-        green: '#5E9894'
+        green: '#2c9a94',
+        Dblack: '#2f3c4'
       },
       boxShadow: {
         custom: '4.474102973937988px 8.948205947875977px 17.896411895751953px 0px #00000040',
