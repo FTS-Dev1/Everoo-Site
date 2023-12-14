@@ -3,7 +3,6 @@
   background: url('../src/Assets/Images/everoo-bg.png') no-repeat center center fixed;
   background-size: cover;
   height: 100vh;
-  overflow: hidden;
 }
 
 .App-logo {
@@ -44,6 +43,10 @@
 
 .everooContainer {
   max-width: 84rem;
+}
+
+:where(.css-dev-only-do-not-override-2q8sxy).ant-steps.ant-steps-label-vertical .ant-steps-item {
+  overflow: hidden;
 }
 
 :where(.css-dev-only-do-not-override-2q8sxy).ant-steps.ant-steps-label-vertical .ant-steps-item-tail {
@@ -169,6 +172,6 @@
 
 .ant-steps {
   line-height: 1.5714285714285714;
-  width: 90%;
+  width: 100%;
   text-align: initial;
 }
