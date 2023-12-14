@@ -83,7 +83,7 @@ const BudgetForm = ({ allEvents, formData, enteringData, selectedEvent, selectin
                     onChange={enteringData}
                     value={formData?.guests}
                 /> </div>
-            <div className='flex  items-center justify-between'>
+            <div className='flex  items-center justify-between pb-5'>
                 <BudgetCard />
                 <Button type="primary" className=" px-10  bg-green rounded-full" onClick={nextPage}>Nächster</Button>
             </div>

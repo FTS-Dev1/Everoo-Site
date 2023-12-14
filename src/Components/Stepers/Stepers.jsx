@@ -205,7 +205,7 @@ const Stepers = () => {
 
     return (
         <>
-            <div className="everooContainer md:mx-auto md:pt-6 h-screen">
+            <div className="xl:max-w-7xl max-w-4xl md:mx-auto md:pt-6 h-screen">
                 <NavBar />
                 <div className='pt-20'>
                     <Steps current={current} onChange={onChange} labelPlacement="vertical">
@@ -215,7 +215,6 @@ const Stepers = () => {
                     </Steps>
                     <div className="steps-content">{steps[current].content}</div>
                 </div>
-
             </div>
         </>
     );
