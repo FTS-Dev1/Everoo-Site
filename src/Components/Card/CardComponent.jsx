@@ -46,7 +46,7 @@ const CardComponent = ({ data, nextPage }) => {
 
                             <a onClick={(e) => e.preventDefault()} >
                                 <Space>
-                                    Event Type
+                                    Art des Ereignisses
                                     <DownOutlined />
                                 </Space>
                             </a>
@@ -64,7 +64,7 @@ const CardComponent = ({ data, nextPage }) => {
 
                             <a onClick={(e) => e.preventDefault()} >
                                 <Space>
-                                    City
+                                    Stadt
                                     <DownOutlined />
                                 </Space>
                             </a>
@@ -82,14 +82,14 @@ const CardComponent = ({ data, nextPage }) => {
 
                             <a onClick={(e) => e.preventDefault()} >
                                 <Space>
-                                    Guest Range
+                                    Gast Wut
                                     <DownOutlined />
                                 </Space>
                             </a>
                         </Dropdown>
                     </div>
 
-                 
+
                 </div>
                 <div>
                     <BudgetCard />

@@ -128,17 +128,17 @@ const Stepers = () => {
             content: <Budget allEvents={eventData} selectedEvent={selectedEvent} setSelectedEvent={setSelectedEvent} formData={formData} enteringData={enteringData} selectingEvent={selectingEvent} nextPage={nextPage} />,
         },
         {
-            title: 'Catering',
+            title: 'Verpflegung',
             icon: <img src={catering2} alt="" width={40} height={50} />,
             content: <CardComponent data={selectedEvent?.cities[0]["Catering"]} nextPage={nextPage} />,
         },
         {
-            title: 'Beverage',
+            title: 'Getränk',
             icon: <img src={beverage} alt="" width={40} />,
             content: <CardComponent data={selectedEvent?.cities[0]["Beverage"]} nextPage={nextPage} />,
         },
         {
-            title: 'Shuttle',
+            title: 'Pendelverkehr',
             icon: <img src={shuttle} alt="" width={40} />,
             content: <CardComponent data={selectedEvent?.cities[0]["Shuttle"]} nextPage={nextPage} />,
         },
@@ -158,22 +158,22 @@ const Stepers = () => {
             content: <CardComponent data={selectedEvent?.cities[0]["Hotelmanagement"]} nextPage={nextPage} />,
         },
         {
-            title: 'Present',
+            title: 'Gegenwart',
             icon: <img src={hotelService} alt="" width={40} />,
             content: <CardComponent data={selectedEvent?.cities[0]["Prasente"]} nextPage={nextPage} />,
         },
         {
-            title: 'Event Technology',
+            title: 'Veranstaltungstechnik',
             icon: <img src={eventTech} alt="" width={40} />,
             content: <CardComponent data={selectedEvent?.cities[0]["Veranstaltungstechnik"]} nextPage={nextPage} />,
         },
         {
-            title: 'Event Module',
+            title: 'Event-Modul',
             icon: <img src={eventModule} alt="" width={40} />,
             content: <CardComponent data={selectedEvent?.cities[0]["Eventmodule"]} nextPage={nextPage} />,
         },
         {
-            title: 'Decoration',
+            title: 'Dekoration',
             icon: <img src={decoration} alt="" width={40} />,
             content: <CardComponent data={selectedEvent?.cities[0]["Dekoration"]} nextPage={nextPage} />,
         },

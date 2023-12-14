@@ -13,8 +13,8 @@ const BudgetCard = () => {
                 <PieChart data={chartData} />
             </div>
             <div className="  px-1 py-2 text-left">
-                <h3 className="text-green font-bold text-md">Budget Total</h3>
-                <p className="text-gray-600 font-medium text-sm">Total Balance: $3250.00</p>
+                <h3 className="text-green font-bold text-md">Gesamtbetrag des Budgets</h3>
+                <p className="text-gray-600 font-medium text-sm">Gesamtbilanz: $3250.00</p>
             </div>
 
         </div>

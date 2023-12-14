@@ -90,7 +90,7 @@
 }
 
 .ant-dropdown-trigger {
-  width: 80%;
+  width: 85%;
 }
 
 :where(.css-dev-only-do-not-override-2q8sxy).ant-select:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer):hover .ant-select-selector {

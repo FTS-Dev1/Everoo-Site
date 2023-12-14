@@ -17,7 +17,7 @@ const BudgetForm = ({ allEvents, formData, enteringData, selectedEvent, selectin
         <div className="container  mt-8">
             <div className='flex items-center mb-4'>
                 <img src={eventIcon} alt="" width={20} />
-                <h1 className="text-xl  text-left pl-3">Event Type</h1>
+                <h1 className="text-xl  text-left pl-3">Art des Ereignisses</h1>
             </div>
             <div className="pb-7 flex space-x-12">
                 <Select className="bg-white shadow-md rounded-md w-full text-left h-[64px]" placeholder="Select Event" prefix={<EnvironmentOutlined />}
@@ -45,12 +45,12 @@ const BudgetForm = ({ allEvents, formData, enteringData, selectedEvent, selectin
             </div>
             <div className='flex items-center pb-3'>
                 <img src={eventIcon} alt="" width={20} />
-                <h1 className="text-xl  text-left pl-3">Event </h1>
+                <h1 className="text-xl  text-left pl-3">Ereignis </h1>
             </div>
             <div className="pb-7 flex space-x-12">
                 {/* <Select prefix={<img src={eventIcon} width={16} className='mr-3' />} placeholder="Event Locality" className="flex-1 bg-white shadow-md text-left" onChange={(value) => setFormData({ ...formData, eventLocality: value })}>
                 </Select> */}
-                <Select placeholder="Location" prefix={<EnvironmentOutlined />} className="flex-1 rounded-md bg-white shadow-md text-left  h-[64px]"
+                <Select placeholder="Veranstaltungsort" prefix={<EnvironmentOutlined />} className="flex-1 rounded-md bg-white shadow-md text-left  h-[64px]"
                     options={selectedEvent?.cities?.map(city => ({ value: city?._id, label: city?.name }))}
                 />
             </div>
@@ -58,7 +58,7 @@ const BudgetForm = ({ allEvents, formData, enteringData, selectedEvent, selectin
                 <Input
                     prefix={<img src={time} width={16} className='mr-3' />}
                     type="number"
-                    placeholder="Number of days"
+                    placeholder="Anzahl der Tage |"
                     className="flex-1 bg-white shadow-md py-5"
                     name='days'
                     onChange={enteringData}
@@ -67,7 +67,7 @@ const BudgetForm = ({ allEvents, formData, enteringData, selectedEvent, selectin
                 <Input
                     prefix={<img src={time} width={16} className='mr-3' />}
                     type="number"
-                    placeholder="Number of hours"
+                    placeholder="Anzahl der Stunden |"
                     className="flex-1 bg-white shadow-md py-5"
                     name='hours'
                     onChange={enteringData}
@@ -77,7 +77,7 @@ const BudgetForm = ({ allEvents, formData, enteringData, selectedEvent, selectin
                 <Input
                     prefix={<img src={guest} width={16} className='mr-3' />}
                     type="number"
-                    placeholder="Amount of guests"
+                    placeholder="Die Anzahl der Gäste |"
                     className="flex-1 bg-white shadow-md py-5"
                     name='guests'
                     onChange={enteringData}
@@ -85,7 +85,7 @@ const BudgetForm = ({ allEvents, formData, enteringData, selectedEvent, selectin
                 /> </div>
             <div className='flex  items-center justify-between'>
                 <BudgetCard />
-                <Button type="primary" className=" px-10  bg-green rounded-full" onClick={nextPage}>Next</Button>
+                <Button type="primary" className=" px-10  bg-green rounded-full" onClick={nextPage}>Nächster</Button>
             </div>
 
         </div>
