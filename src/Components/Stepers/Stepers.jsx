@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Steps, Divider } from 'antd';
 import catering from '../../Assets/svgs/catering.svg';
+import catering2 from '../../Assets/svgs/catering1.svg';
 import beverage from '../../Assets/svgs/beverage.svg';
 import shuttle from '../../Assets/svgs/shuttle.svg';
 import staff from '../../Assets/svgs/staff.svg';
@@ -17,6 +18,7 @@ import Budget from '../../Pages/Budget/Budget';
 import ContactForm from '../../Pages/ContactForm/ContactForm';
 import { CreatOrderAPI, GetAllEventsAPI } from 'API/event';
 import { toast } from "react-toastify";
+import NavBar from 'Pages/Header/Header';
 
 
 
@@ -127,7 +129,7 @@ const Stepers = () => {
         },
         {
             title: 'Catering',
-            icon: <img src={catering} alt="" width={40} height={50} />,
+            icon: <img src={catering2} alt="" width={40} height={50} />,
             content: <CardComponent data={selectedEvent?.cities[0]["Catering"]} nextPage={nextPage} />,
         },
         {
@@ -203,14 +205,17 @@ const Stepers = () => {
 
     return (
         <>
-            <div className="md:max-w-7xl md:mx-auto md:pt-6 h-screen">
-                <Steps current={current} onChange={onChange} labelPlacement="vertical">
-                    {steps.map((step, index) => (
-                        <Step key={index} title={step.title} icon={step.icon} />
-                    ))}
-                </Steps>
-                <Divider />
-                <div className="steps-content">{steps[current].content}</div>
+            <div className="everooContainer md:mx-auto md:pt-6 h-screen">
+                <NavBar />
+                <div className='pt-20'>
+                    <Steps current={current} onChange={onChange} labelPlacement="vertical">
+                        {steps.map((step, index) => (
+                            <Step key={index} title={step.title} icon={step.icon} />
+                        ))}
+                    </Steps>
+                    <div className="steps-content">{steps[current].content}</div>
+                </div>
+
             </div>
         </>
     );

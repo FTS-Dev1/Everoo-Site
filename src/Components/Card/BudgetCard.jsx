@@ -5,7 +5,7 @@ const BudgetCard = () => {
     const chartData = {
         labels: ['Total Budget', 'Your Budget'],
         values: [30, 50],
-        colors: ['#FF6384', '#36A2EB', '#FFCE56'],
+        colors: ['#5E9894', '#343B4B'],
     };
     return (
         <div className="flex  items-center bg-white rounded-lg shadow-custom w-64">
