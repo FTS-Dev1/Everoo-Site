@@ -16,7 +16,7 @@ import catering1 from '../../Assets/Images/catering1.png'
 import CardComponent from '../Card/CardComponent';
 import Budget from '../../Pages/Budget/Budget';
 import ContactForm from '../../Pages/ContactForm/ContactForm';
-import { CreatOrderAPI, GetAllEventsAPI } from 'API/event';
+import { CreatOrderAPI, GetAllEventsAPI, GetAllRangesAPI } from 'API/event';
 import { toast } from "react-toastify";
 import NavBar from 'Pages/Header/Header';
 
@@ -74,17 +74,31 @@ const Stepers = () => {
     const [current, setCurrent] = useState(0);
 
     const [eventData, setEventData] = useState([])
+    const [rangeData, setRangeData] = useState([])
+
     const [selectedEvent, setSelectedEvent] = useState(null)
+    const [selectedRange, setSelectedRange] = useState(null)
 
     const [formData, setFormData] = useState({
         budget: "",
         days: "",
         hours: "",
-        guests: "",
         firstName: "",
         lastName: "",
         email: "",
         phone: ""
+    })
+    const [selectedServices, setSelectedServices] = useState({
+        Catering: null,
+        Beverage: null,
+        Shuttle: null,
+        Staff: null,
+        Ausstattung: null,
+        Hotelmanagement: null,
+        Prasente: null,
+        Veranstaltungstechnik: null,
+        Eventmodule: null,
+        Dekoration: null,
     })
 
     const enteringData = (event) => {
@@ -98,6 +112,17 @@ const Stepers = () => {
     const selectingEvent = (id) => {
         let findEvent = eventData.find(event => event?._id == id)
         setSelectedEvent(findEvent)
+    }
+    const selectingRange = (id) => {
+        let findRange = rangeData.find(range => range?._id == id)
+        selectedRange(findRange)
+    }
+
+    const selectingService = (id, data) => {
+        setSelectedServices({
+            ...selectedServices,
+            [id]: data
+        })
     }
 
 
@@ -125,57 +150,57 @@ const Stepers = () => {
         {
             title: 'Budget',
             icon: <img src={catering} alt="" width={40} height={50} />,
-            content: <Budget allEvents={eventData} selectedEvent={selectedEvent} setSelectedEvent={setSelectedEvent} formData={formData} enteringData={enteringData} selectingEvent={selectingEvent} nextPage={nextPage} />,
+            content: <Budget allEvents={eventData} allRanges={rangeData} selectedEvent={selectedEvent} selectedRange={selectedRange} setSelectedEvent={setSelectedEvent} formData={formData} enteringData={enteringData} selectingEvent={selectingEvent} selectingRange={selectingRange} nextPage={nextPage} />,
         },
         {
             title: 'Verpflegung',
             icon: <img src={catering2} alt="" width={40} height={50} />,
-            content: <CardComponent data={selectedEvent?.cities[0]["Catering"]} nextPage={nextPage} />,
+            content: <CardComponent data={selectedEvent?.cities[0]["Catering"]} nextPage={nextPage} selectedService={selectedServices["Catering"]} />,
         },
         {
             title: 'Getränk',
             icon: <img src={beverage} alt="" width={40} />,
-            content: <CardComponent data={selectedEvent?.cities[0]["Beverage"]} nextPage={nextPage} />,
+            content: <CardComponent data={selectedEvent?.cities[0]["Beverage"]} nextPage={nextPage} selectedService={selectedServices["Beverage"]} />,
         },
         {
             title: 'Pendelverkehr',
             icon: <img src={shuttle} alt="" width={40} />,
-            content: <CardComponent data={selectedEvent?.cities[0]["Shuttle"]} nextPage={nextPage} />,
+            content: <CardComponent data={selectedEvent?.cities[0]["Shuttle"]} nextPage={nextPage} selectedService={selectedServices["Shuttle"]} />,
         },
         {
             title: 'Staff',
             icon: <img src={staff} alt="" width={40} />,
-            content: <CardComponent data={selectedEvent?.cities[0]["Staff"]} nextPage={nextPage} />,
+            content: <CardComponent data={selectedEvent?.cities[0]["Staff"]} nextPage={nextPage} selectedService={selectedServices["Staff"]} />,
         },
         {
             title: 'Ausstattung',
             icon: <img src={ausatting} alt="" width={40} />,
-            content: <CardComponent data={selectedEvent?.cities[0]["Ausstattung"]} nextPage={nextPage} />,
+            content: <CardComponent data={selectedEvent?.cities[0]["Ausstattung"]} nextPage={nextPage} selectedService={selectedServices["Ausstattung"]} />,
         },
         {
             title: 'Hotel Management',
             icon: <img src={hotelService} alt="" width={40} />,
-            content: <CardComponent data={selectedEvent?.cities[0]["Hotelmanagement"]} nextPage={nextPage} />,
+            content: <CardComponent data={selectedEvent?.cities[0]["Hotelmanagement"]} nextPage={nextPage} selectedService={selectedServices["Hotelmanagement"]} />,
         },
         {
             title: 'Gegenwart',
             icon: <img src={hotelService} alt="" width={40} />,
-            content: <CardComponent data={selectedEvent?.cities[0]["Prasente"]} nextPage={nextPage} />,
+            content: <CardComponent data={selectedEvent?.cities[0]["Prasente"]} nextPage={nextPage} selectedService={selectedServices["Prasente"]} />,
         },
         {
             title: 'Veranstaltungstechnik',
             icon: <img src={eventTech} alt="" width={40} />,
-            content: <CardComponent data={selectedEvent?.cities[0]["Veranstaltungstechnik"]} nextPage={nextPage} />,
+            content: <CardComponent data={selectedEvent?.cities[0]["Veranstaltungstechnik"]} nextPage={nextPage} selectedService={selectedServices["Veranstaltungstechnik"]} />,
         },
         {
             title: 'Event-Modul',
             icon: <img src={eventModule} alt="" width={40} />,
-            content: <CardComponent data={selectedEvent?.cities[0]["Eventmodule"]} nextPage={nextPage} />,
+            content: <CardComponent data={selectedEvent?.cities[0]["Eventmodule"]} nextPage={nextPage} selectedService={selectedServices["Eventmodule"]} />,
         },
         {
             title: 'Dekoration',
             icon: <img src={decoration} alt="" width={40} />,
-            content: <CardComponent data={selectedEvent?.cities[0]["Dekoration"]} nextPage={nextPage} />,
+            content: <CardComponent data={selectedEvent?.cities[0]["Dekoration"]} nextPage={nextPage} selectedService={selectedServices["Dekoration"]} />,
         },
         {
             title: 'Personal Info',
@@ -198,8 +223,17 @@ const Stepers = () => {
             setEventData(res.data?.result || [])
         }
     }
+    let gettingAllRanges = async () => {
+        let res = await GetAllRangesAPI()
+        if (res.error != null) {
+            toast.error(res.error)
+        } else {
+            setRangeData(res.data?.result || [])
+        }
+    }
     useEffect(() => {
         gettingAllEvents()
+        gettingAllRanges()
 
     }, [])
 

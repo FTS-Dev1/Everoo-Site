@@ -9,7 +9,7 @@ import BudgetCard from '../../Components/Card/BudgetCard';
 import axios from 'axios';
 
 const { Option } = Select;
-const BudgetForm = ({ allEvents, formData, enteringData, selectedEvent, selectingEvent, nextPage }) => {
+const BudgetForm = ({ allEvents, allRanges, formData, enteringData, selectedEvent, selectedRange, selectingEvent, selectingRange, nextPage }) => {
     const handleFormSubmit = async () => {
 
     };
@@ -74,7 +74,12 @@ const BudgetForm = ({ allEvents, formData, enteringData, selectedEvent, selectin
                     value={formData?.hours}
                 /> </div>
             <div className="pb-7 flex space-x-4">
-                <Input
+                <Select className="bg-white shadow-md rounded-md w-full text-left h-[64px]" placeholder="Die Anzahl der Gäste |" prefix={<EnvironmentOutlined />}
+                    options={allRanges.map(range => ({ value: range?._id, label: `${range?.min} --- ${range?.max}` }))}
+                    onChange={selectingRange}
+                    value={selectedRange?._id}
+                />
+                {/* <Input
                     prefix={<img src={guest} width={16} className='mr-3' />}
                     type="number"
                     placeholder="Die Anzahl der Gäste |"
@@ -82,7 +87,8 @@ const BudgetForm = ({ allEvents, formData, enteringData, selectedEvent, selectin
                     name='guests'
                     onChange={enteringData}
                     value={formData?.guests}
-                /> </div>
+                /> */}
+            </div>
             <div className='flex  items-center justify-between pb-5'>
                 <BudgetCard />
                 <Button type="primary" className=" px-10  bg-green rounded-full" onClick={nextPage}>Nächster</Button>
