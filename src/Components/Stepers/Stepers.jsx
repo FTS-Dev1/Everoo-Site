@@ -146,11 +146,22 @@ const Stepers = () => {
     }
 
     const submitForm = async () => {
+
+        let services = {};
+        Object.keys(selectedServices).map(key => {
+            if (selectedServices[key] != null) {
+                services[key] = selectedServices[key]._id
+            }
+        })
+
+
         let payload = {
             ...formData,
             event: selectedEvent?._id,
             city: selectedLocation?._id,
+            guests: selectedRange?._id,
             bill,
+            services
         }
         let res = await CreatOrderAPI(payload)
         if (res.error != null) {
