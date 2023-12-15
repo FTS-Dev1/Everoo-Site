@@ -7,6 +7,8 @@ import guest from '../../Assets/svgs/guest.svg'
 import { DollarOutlined, EnvironmentOutlined } from '@ant-design/icons';
 import BudgetCard from '../../Components/Card/BudgetCard';
 import axios from 'axios';
+import { DatePicker } from 'antd';
+const { RangePicker } = DatePicker;
 
 const { Option } = Select;
 const BudgetForm = ({ allEvents, allRanges, formData, enteringData, selectedEvent, selectedLocation, selectedRange, selectingEvent, selectingLocation, selectingRange, nextPage, bill }) => {
@@ -57,7 +59,7 @@ const BudgetForm = ({ allEvents, allRanges, formData, enteringData, selectedEven
                 />
             </div>
             <div className="pb-7 flex space-x-12">
-                <Input
+                {/* <Input
                     prefix={<img src={time} width={16} className='mr-3' />}
                     type="number"
                     placeholder="Anzahl der Tage |"
@@ -65,7 +67,10 @@ const BudgetForm = ({ allEvents, allRanges, formData, enteringData, selectedEven
                     name='days'
                     onChange={enteringData}
                     value={formData?.days}
-                />
+                /> */}
+                <RangePicker
+                    onChange={enteringData}
+                    value={formData?.days} className="flex-1 bg-white shadow-md py-5" />
                 <Input
                     prefix={<img src={time} width={16} className='mr-3' />}
                     type="number"

@@ -7,6 +7,7 @@ import IMAGEURLGEN from "Utils/ImgUrlGen"
 import eventIcon from '../../Assets/svgs/eventIcon.svg'
 import location from '../../Assets/svgs/location.svg'
 import guest from '../../Assets/svgs/guest.svg'
+import arrow from 'Assets/svgs/arrow.svg'
 
 
 
@@ -33,27 +34,7 @@ const CardComponent = ({ data, nextPage, serviceName, selectedService, selecting
 
         <div className='px-5 mt-10 grid grid-cols-1 gap-x-8 gap-y-16 py-10 sm:mb-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-12'>
             <div className=' col-span-3 flex flex-col justify-between'>
-                <div className='flex flex-col items-start gap-5'>
-                    <div className='flex items-start gap-5'>
-                        <img src={eventIcon} width={20} />
-                        <Dropdown
-                            className='w-80'
-                            menu={{
-                                items: [
-                                    {
-                                        label: selectedEvent?.name,
-                                        key: '0',
-                                    }
-                                ]
-                            }}
-                        >
-
-                            <Space>
-                                Art des Ereignisses
-                                <DownOutlined />
-                            </Space>
-                        </Dropdown>
-                    </div>
+                <div className='flex flex-col items-start gap-5 pb-5'>
                     <div className='flex items-start gap-5'>
                         <img src={location} width={20} />
                         <Dropdown
@@ -80,7 +61,7 @@ const CardComponent = ({ data, nextPage, serviceName, selectedService, selecting
                             menu={{
                                 items: [
                                     {
-                                        label: `${selectedRange?.min} ---- ${selectedRange?.max}`,
+                                        label: `${selectedRange?.min} - ${selectedRange?.max}`,
                                         key: '0',
                                     }
                                 ],
@@ -103,7 +84,7 @@ const CardComponent = ({ data, nextPage, serviceName, selectedService, selecting
                     {data?.map((card, index) => (
                         <div className={`${selectedService?._id == card?._id ? "relative cursor-pointer bg-[#C8F1F3] rounded-2xl text-Dblack shadow-md shadow-2xl border-green hover:shadow-2xl hover:border-green" : "relative cursor-pointer bg-white rounded-2xl text-Dblack shadow-md hover:shadow-2xl hover:border-green"}`} onClick={() => selectingService(serviceName, card)}>
                             <div className='absolute cardalign'>
-                                <img src={IMAGEURLGEN(card.image)} alt='Image of card' className='w-72 h-48 object-cover rounded-2xl' />
+                                <img src={IMAGEURLGEN(card.image)} alt='Image of card' className='w-64 h-48 object-cover rounded-2xl' />
                             </div>
                             <div className='max-w-xs  overflow-hidden  relative pt-48'>
                                 <div className='px-6 py-4 group '>
@@ -112,6 +93,10 @@ const CardComponent = ({ data, nextPage, serviceName, selectedService, selecting
                                         <button className='bg-green hover:shadow-lg text-white font-bold py-2 px-4 rounded'>{card.price}</button>
                                     </div>
                                     <p className='mt-5 text-sm leading-6 text-gray-600 text-left'>{card.description}</p>
+                                    <div className='flex justify-end pt-4 pb-5'>
+                                        <img src={arrow}>
+                                        </img>
+                                    </div>
                                 </div>
                             </div>
                         </div>
