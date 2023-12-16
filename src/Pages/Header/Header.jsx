@@ -3,7 +3,8 @@
 import React from 'react';
 import { Layout, Menu, Button } from 'antd';
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
-import everoo from '../../Assets/Images/logo-everoo.png.png'
+// import everoo from '../../Assets/Images/logo-everoo.png.png'
+import { ReactComponent as Logo } from '../../Assets/svgs/logo.svg'
 
 const { Header } = Layout;
 
@@ -17,7 +18,8 @@ const Navbar = () => {
   return (
     <Header className="flex items-center justify-between ">
       <div className="flex items-center space-x-10">
-        <img src={everoo}></img>
+        {/* <img src={everoo}></img> */}
+        <Logo width={220} />
         {/* <div className="text-white text-2xl font-bold">Your Logo</div> */}
       </div>
       <div className='flex-1'>
@@ -34,7 +36,7 @@ const Navbar = () => {
       </div>
 
       <div className="flex items-center space-x-4">
-      <Button type="primary" className=" px-10  bg-green rounded-full" >Eventplaner</Button>
+        <Button type="primary" className=" px-10  bg-green rounded-full" >Eventplaner</Button>
       </div>
     </Header>
   );

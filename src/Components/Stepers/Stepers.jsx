@@ -24,54 +24,10 @@ import NavBar from 'Pages/Header/Header';
 
 
 const { Step } = Steps;
-const cateringData = [
-    {
-        imageSrc: catering1,
-        title: 'Catering',
-        price: '$500',
-        description:
-            'Discover the perfect solution for successful meetings with Everoo. From planning to implementation, we offer tailor-made concepts and professional support. Smooth and effective meeting experience for your participants.',
-    },
-    {
-        imageSrc: catering1,
-        title: 'Catering',
-        price: '$500',
-        description:
-            'Discover the perfect solution for successful meetings with Everoo. From planning to implementation, we offer tailor-made concepts and professional support. Smooth and effective meeting experience for your participants.',
-    },
-    {
-        imageSrc: catering1,
-        title: 'Catering',
-        price: '$500',
-        description:
-            'Discover the perfect solution for successful meetings with Everoo. From planning to implementation, we offer tailor-made concepts and professional support. Smooth and effective meeting experience for your participants.',
-    },
-    {
-        imageSrc: catering1,
-        title: 'Catering',
-        price: '$500',
-        description:
-            'Discover the perfect solution for successful meetings with Everoo. From planning to implementation, we offer tailor-made concepts and professional support. Smooth and effective meeting experience for your participants.',
-    },
-    {
-        imageSrc: catering1,
-        title: 'Catering',
-        price: '$500',
-        description:
-            'Discover the perfect solution for successful meetings with Everoo. From planning to implementation, we offer tailor-made concepts and professional support. Smooth and effective meeting experience for your participants.',
-    },
-    {
-        imageSrc: catering1,
-        title: 'Catering',
-        price: '$500',
-        description:
-            'Discover the perfect solution for successful meetings with Everoo. From planning to implementation, we offer tailor-made concepts and professional support. Smooth and effective meeting experience for your participants.',
-    },
-    // Add more card data objects as needed
-];
 const Stepers = () => {
 
     const [current, setCurrent] = useState(0);
+    const [activeSteps, setActiveSteps] = useState([])
 
     const [eventData, setEventData] = useState([])
     const [rangeData, setRangeData] = useState([])
@@ -106,6 +62,12 @@ const Stepers = () => {
 
     const enteringData = (event) => {
         let { name, value } = event.target;
+        if (name == "hours") {
+            if (value >= 25) {
+                toast.warn("Please Enter less than 25 Hours")
+                return
+            }
+        }
         setFormData({
             ...formData,
             [name]: value
@@ -113,6 +75,7 @@ const Stepers = () => {
     }
 
     const selectingEvent = (id) => {
+        setSelectedLocation(null)
         let findEvent = eventData.find(event => event?._id == id)
         setSelectedEvent(findEvent)
     }
@@ -146,6 +109,12 @@ const Stepers = () => {
     }
 
     const submitForm = async () => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!formData.email || !emailRegex.test(formData?.email)) {
+            toast.warn("Invalid Email")
+            return
+        }
 
         let services = {};
         Object.keys(selectedServices).map(key => {
@@ -168,10 +137,10 @@ const Stepers = () => {
             toast.error(res.error)
         } else {
             toast.success(res.data?.message)
+            setTimeout(() => {
+                window.location.href = "/"
+            }, 1500);
         }
-        setTimeout(() => {
-            window.location.href = "/"
-        }, 1500);
     }
 
     const steps = [
@@ -179,53 +148,64 @@ const Stepers = () => {
             title: 'Budget',
             icon: <img src={catering} alt="" width={40} height={50} />,
             content: <Budget allEvents={eventData} allRanges={rangeData} selectedEvent={selectedEvent} selectedRange={selectedRange} selectedLocation={selectedLocation} setSelectedEvent={setSelectedEvent} formData={formData} enteringData={enteringData} selectingEvent={selectingEvent} selectingLocation={selectingLocation} selectingRange={selectingRange} nextPage={nextPage} bill={bill} />,
+            isDefault: true
         },
         {
+            id: "Catering",
             title: 'Verpflegung',
             icon: <img src={catering2} alt="" width={40} height={50} />,
             content: <CardComponent data={selectedEvent?.cities[0]["Catering"]} nextPage={nextPage} selectedService={selectedServices["Catering"]} selectingService={selectingService} serviceName="Catering" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
         },
         {
+            id: "Beverage",
             title: 'Getränk',
             icon: <img src={beverage} alt="" width={40} />,
             content: <CardComponent data={selectedEvent?.cities[0]["Beverage"]} nextPage={nextPage} selectedService={selectedServices["Beverage"]} selectingService={selectingService} serviceName="Beverage" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
         },
         {
+            id: "Shuttle",
             title: 'Pendelverkehr',
             icon: <img src={shuttle} alt="" width={40} />,
             content: <CardComponent data={selectedEvent?.cities[0]["Shuttle"]} nextPage={nextPage} selectedService={selectedServices["Shuttle"]} selectingService={selectingService} serviceName="Shuttle" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
         },
         {
+            id: "Staff",
             title: 'Staff',
             icon: <img src={staff} alt="" width={40} />,
             content: <CardComponent data={selectedEvent?.cities[0]["Staff"]} nextPage={nextPage} selectedService={selectedServices["Staff"]} selectingService={selectingService} serviceName="Staff" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
         },
         {
+            id: "Ausstattung",
             title: 'Ausstattung',
             icon: <img src={ausatting} alt="" width={40} />,
             content: <CardComponent data={selectedEvent?.cities[0]["Ausstattung"]} nextPage={nextPage} selectedService={selectedServices["Ausstattung"]} selectingService={selectingService} serviceName="Ausstattung" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
         },
         {
+            id: "Hotelmanagement",
             title: 'Hotel Management',
             icon: <img src={hotelService} alt="" width={40} />,
             content: <CardComponent data={selectedEvent?.cities[0]["Hotelmanagement"]} nextPage={nextPage} selectedService={selectedServices["Hotelmanagement"]} selectingService={selectingService} serviceName="Hotelmanagement" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
         },
         {
+            id: "Prasente",
             title: 'Gegenwart',
             icon: <img src={hotelService} alt="" width={40} />,
             content: <CardComponent data={selectedEvent?.cities[0]["Prasente"]} nextPage={nextPage} selectedService={selectedServices["Prasente"]} selectingService={selectingService} serviceName="Prasente" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
         },
         {
+            id: "Veranstaltungstechnik",
             title: 'Veranstaltungstechnik',
             icon: <img src={eventTech} alt="" width={40} />,
             content: <CardComponent data={selectedEvent?.cities[0]["Veranstaltungstechnik"]} nextPage={nextPage} selectedService={selectedServices["Veranstaltungstechnik"]} selectingService={selectingService} serviceName="Veranstaltungstechnik" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
         },
         {
+            id: "Eventmodule",
             title: 'Event-Modul',
             icon: <img src={eventModule} alt="" width={40} />,
             content: <CardComponent data={selectedEvent?.cities[0]["Eventmodule"]} nextPage={nextPage} selectedService={selectedServices["Eventmodule"]} selectingService={selectingService} serviceName="Eventmodule" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
         },
         {
+            id: "Dekoration",
             title: 'Dekoration',
             icon: <img src={decoration} alt="" width={40} />,
             content: <CardComponent data={selectedEvent?.cities[0]["Dekoration"]} nextPage={nextPage} selectedService={selectedServices["Dekoration"]} selectingService={selectingService} serviceName="Dekoration" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
@@ -234,12 +214,20 @@ const Stepers = () => {
             title: 'Personal Info',
             icon: <img src={catering} alt="" width={40} height={50} />,
             content: <ContactForm allEvents={eventData} selectedEvent={selectedEvent} setSelectedEvent={setSelectedEvent} formData={formData} enteringData={enteringData} selectingEvent={selectingEvent} nextPage={nextPage} submitForm={submitForm} bill={bill} />,
+            isDefault: true,
+            end: true
         },
     ];
 
     const onChange = (value) => {
         console.log('onChange:', value);
         setCurrent(value);
+    };
+
+
+    const calculateStepWidth = () => {
+        const totalStepsWithData = activeSteps.length;
+        return 100 / totalStepsWithData + "%";
     };
 
 
@@ -281,18 +269,43 @@ const Stepers = () => {
         setBill(drivedBill);
 
     }, [selectedServices])
+    useEffect(() => {
+        let findActiveSteps = []
+        if (eventData && eventData?.length >= 1) {
+            steps.map(step => {
+                if (step.isDefault && !step.end) {
+                    findActiveSteps.push(step)
+                }
+                if (selectedEvent && selectedLocation) {
+                    if (selectedLocation[step?.id] && selectedLocation[step?.id].length >= 1) {
+                        findActiveSteps.push(step)
+                    }
+                    if (step.end) {
+                        findActiveSteps.push(step)
+                    }
+                }
+            })
+        } else {
+            steps.map(step => {
+                if (step.isDefault && !step.end) {
+                    findActiveSteps.push(step)
+                }
+            })
+        }
+        setActiveSteps(findActiveSteps)
+    }, [eventData, selectedEvent, selectedLocation, formData, selectedServices, current, bill])
 
     return (
         <>
             <div className="xl:max-w-7xl max-w-4xl md:mx-auto md:pt-6 h-screen">
                 <NavBar />
                 <div className='pt-20'>
-                    <Steps current={current} onChange={onChange} labelPlacement="vertical">
-                        {steps.map((step, index) => (
-                            <Step key={index} title={step.title} icon={step.icon} />
+                    <Steps style={{ width: "100%" }} current={current} onChange={onChange} labelPlacement="vertical">
+                        {activeSteps.map((step, index) => (
+                            <Step style={{ width: calculateStepWidth() }} key={index} title={step.title} icon={step.icon} />
                         ))}
                     </Steps>
-                    <div className="steps-content">{steps[current].content}</div>
+                    <div className="steps-content">{activeSteps[current]?.content}</div>
                 </div>
             </div>
         </>

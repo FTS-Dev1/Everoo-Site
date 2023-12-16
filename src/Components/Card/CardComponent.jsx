@@ -84,13 +84,13 @@ const CardComponent = ({ data, nextPage, serviceName, selectedService, selecting
                     {data?.map((card, index) => (
                         <div className={`${selectedService?._id == card?._id ? "relative cursor-pointer bg-[#C8F1F3] rounded-2xl text-Dblack shadow-md shadow-2xl border-green hover:shadow-2xl hover:border-green" : "relative cursor-pointer bg-white rounded-2xl text-Dblack shadow-md hover:shadow-2xl hover:border-green"}`} onClick={() => selectingService(serviceName, card)}>
                             <div className='absolute cardalign'>
-                                <img src={IMAGEURLGEN(card.image)} alt='Image of card' className='w-64 h-48 object-cover rounded-2xl' />
+                                <img src={IMAGEURLGEN(card.image)} alt='Image of card' className='w-[270px] h-48 object-cover rounded-2xl' />
                             </div>
                             <div className='max-w-xs  overflow-hidden  relative pt-48'>
                                 <div className='px-6 py-4 group '>
                                     <div className='flex justify-between items-center'>
                                         <h2 className='font-bold text-xl mb-2 leading-6 text-grey group-hover:text-green'>{card.title}</h2>
-                                        <button className='bg-green hover:shadow-lg text-white font-bold py-2 px-4 rounded'>{card.price}</button>
+                                        <button className='bg-green hover:shadow-lg text-white font-bold py-2 px-4 rounded'>$ {card.price}</button>
                                     </div>
                                     <p className='mt-5 text-sm leading-6 text-gray-600 text-left'>{card.description}</p>
                                     <div className='flex justify-end pt-4 pb-5'>
