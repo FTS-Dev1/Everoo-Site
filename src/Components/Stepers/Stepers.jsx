@@ -298,7 +298,7 @@ const Stepers = () => {
     return (
         <>
             <div className="xl:max-w-7xl max-w-4xl md:mx-auto md:pt-6 h-screen">
-                <NavBar />
+                {/* <NavBar /> */}
                 <div className='pt-20'>
                     <Steps style={{ width: "100%" }} current={current} onChange={onChange} labelPlacement="vertical">
                         {activeSteps.map((step, index) => (
