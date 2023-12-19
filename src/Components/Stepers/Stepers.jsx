@@ -157,6 +157,12 @@ const Stepers = () => {
             content: <CardComponent data={selectedEvent?.cities[0]["Catering"]} nextPage={nextPage} selectedService={selectedServices["Catering"]} selectingService={selectingService} serviceName="Catering" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
         },
         {
+            id: "Locality",
+            title: 'Locality',
+            icon: <img src={catering2} alt="" width={40} height={50} />,
+            content: <CardComponent data={selectedEvent?.cities[0]["Catering"]} nextPage={nextPage} selectedService={selectedServices["Catering"]} selectingService={selectingService} serviceName="Catering" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
+        },
+        {
             id: "Beverage",
             title: 'Getränk',
             icon: <img src={beverage} alt="" width={40} />,
@@ -298,11 +304,11 @@ const Stepers = () => {
     return (
         <>
             <div className="xl:max-w-7xl max-w-4xl md:mx-auto md:pt-6 h-screen">
-                {/* <NavBar /> */}
+                <NavBar />
                 <div className='pt-20'>
-                    <Steps style={{ width: "100%" }} current={current} onChange={onChange} labelPlacement="vertical">
+                    <Steps  current={current} onChange={onChange} labelPlacement="vertical">
                         {activeSteps.map((step, index) => (
-                            <Step style={{ width: calculateStepWidth() }} key={index} title={step.title} icon={step.icon} />
+                            <Step key={index} title={step.title} icon={step.icon} />
                         ))}
                     </Steps>
                     <div className="steps-content">{activeSteps[current]?.content}</div>

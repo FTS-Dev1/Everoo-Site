@@ -16,12 +16,12 @@ const ContactForm = ({ allEvents, formData, enteringData, selectedEvent, selecti
 
 
     return (
-        <div className="container  mt-8 px-4">
+        <div className="container  mt-8 px-5 lg:px-0">
             <div className='flex items-center mb-4 my-[50px]'>
                 <img src={eventIcon} alt="" width={20} />
                 <h1 className="text-xl  text-left pl-3">Persönliche Informationen</h1>
             </div>
-            <div className="pb-7 flex space-x-12">
+            <div className="pb-7 flex flex-col space-y-4 lg:space-y-0 lg:flex-row lg:space-x-12 lg:items-start">
                 {/* Add options for Location */}
                 <Input
                     prefix={<img src={eventIcon} width={16} className='mr-3' />}
@@ -68,9 +68,9 @@ const ContactForm = ({ allEvents, formData, enteringData, selectedEvent, selecti
                     onChange={enteringData}
                     value={formData?.phone}
                 /> </div>
-            <div className='flex  items-center justify-between'>
+            <div className='flex flex-col lg:flex-row items-center justify-between pb-5 px-5 lg:px-0'>
                 <BudgetCard budget={formData?.budget} bill={bill} />
-                <Button type="primary" className=" px-10  bg-green rounded-full" onClick={submitForm}>Einreichen</Button>
+                <Button type="primary" className=" px-10  bg-green rounded-full mt-4 lg:mt-0" onClick={submitForm}>Einreichen</Button>
             </div>
 
         </div>
