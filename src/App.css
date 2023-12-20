@@ -55,6 +55,11 @@
 
 }
 
+.ant-steps.ant-steps-vertical {
+  display: grid;
+  justify-content: center;
+}
+
 .ant-steps .ant-steps-item-finish>.ant-steps-item-container>.ant-steps-item-tail::after {
   background-color: #5E9894;
 }

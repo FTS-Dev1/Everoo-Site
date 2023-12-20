@@ -8,7 +8,7 @@ const BudgetCard = ({ budget, bill }) => {
         colors: ['#5E9894', '#343B4B'],
     };
     return (
-        <div className="flex bg-white rounded-lg shadow-custom w-80">
+        <div className="flex bg-white rounded-lg shadow-custom w-72 lg:w-56 xl:w-80">
             <div className="py-2">
                 <PieChart data={chartData} />
             </div>

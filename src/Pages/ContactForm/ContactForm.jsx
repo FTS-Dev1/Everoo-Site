@@ -16,17 +16,17 @@ const ContactForm = ({ allEvents, formData, enteringData, selectedEvent, selecti
 
 
     return (
-        <div className="container  mt-8">
+        <div className="container  mt-8 px-5 lg:px-0">
             <div className='flex items-center mb-4 my-[50px]'>
                 <img src={eventIcon} alt="" width={20} />
-                <h1 className="text-xl  text-left pl-3">Personal Info</h1>
+                <h1 className="text-xl  text-left pl-3">Persönliche Informationen</h1>
             </div>
-            <div className="pb-7 flex space-x-12">
+            <div className="pb-7 flex flex-col space-y-4 lg:space-y-0 lg:flex-row lg:space-x-12 lg:items-start">
                 {/* Add options for Location */}
                 <Input
                     prefix={<img src={eventIcon} width={16} className='mr-3' />}
                     type="text"
-                    placeholder="First Name"
+                    placeholder="Vorname"
                     className="bg-white shadow-md py-5 w-50 pl-5"
                     name='firstName'
                     onChange={enteringData}
@@ -35,7 +35,7 @@ const ContactForm = ({ allEvents, formData, enteringData, selectedEvent, selecti
                 <Input
                     prefix={<img src={eventIcon} width={16} className='mr-3' />}
                     type="text"
-                    placeholder="Last Name"
+                    placeholder="Nachname"
                     className="bg-white shadow-md py-5 w-50 pl-5"
                     name='lastName'
                     onChange={enteringData}
@@ -45,13 +45,13 @@ const ContactForm = ({ allEvents, formData, enteringData, selectedEvent, selecti
             </div>
             <div className='flex items-center pb-3'>
                 <img src={eventIcon} alt="" width={20} />
-                <h1 className="text-xl  text-left pl-3">Contact Info </h1>
+                <h1 className="text-xl  text-left pl-3">Kontakt Infos</h1>
             </div>
             <div className="pb-7 flex space-x-12">
                 <Input
                     prefix={<img src={eventIcon} width={16} className='mr-3' />}
                     type="text"
-                    placeholder="Email"
+                    placeholder="E-Mail"
                     className="bg-white shadow-md py-5 w-50 pl-5"
                     name='email'
                     onChange={enteringData}
@@ -62,15 +62,15 @@ const ContactForm = ({ allEvents, formData, enteringData, selectedEvent, selecti
                 <Input
                     prefix={<img src={guest} width={16} className='mr-3' />}
                     type="number"
-                    placeholder="Phone No."
+                    placeholder="Telefonnummer"
                     className="flex-1 bg-white shadow-md py-5"
                     name='phone'
                     onChange={enteringData}
                     value={formData?.phone}
                 /> </div>
-            <div className='flex  items-center justify-between'>
+            <div className='flex flex-col lg:flex-row items-center justify-between pb-5 px-5 lg:px-0'>
                 <BudgetCard budget={formData?.budget} bill={bill} />
-                <Button type="primary" className=" px-10  bg-green rounded-full" onClick={submitForm}>Submit</Button>
+                <Button type="primary" className=" px-10  bg-green rounded-full mt-4 lg:mt-0" onClick={submitForm}>Einreichen</Button>
             </div>
 
         </div>

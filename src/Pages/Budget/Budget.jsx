@@ -22,13 +22,13 @@ const BudgetForm = ({ allEvents, allRanges, formData, enteringData, selectedEven
     };
 
     return (
-        <div className="container  mt-8">
+        <div className="container  mt-8 px-5 lg:px-0">
             <div className='flex items-center mb-4'>
                 <img src={eventIcon} alt="" width={20} />
                 <h1 className="text-xl  text-left pl-3">Art des Ereignisses</h1>
             </div>
-            <div className="pb-7 flex space-x-12">
-                <Select className="bg-white shadow-md rounded-md w-full text-left h-[64px]" placeholder="Select Event" prefix={<EnvironmentOutlined />}
+            <div className="pb-7 flex flex-col space-y-4 lg:space-y-0 lg:flex-row lg:space-x-12 lg:items-start">
+                <Select className="bg-white shadow-md rounded-md w-full text-left h-[64px]" placeholder="Ereignis wählen" prefix={<EnvironmentOutlined />}
                     options={allEvents.map(event => ({ value: event?._id, label: event?.name }))}
                     onChange={selectingEvent}
                     value={selectedEvent?._id}
@@ -36,7 +36,7 @@ const BudgetForm = ({ allEvents, allRanges, formData, enteringData, selectedEven
                 <Input
                     prefix={<img src={eventIcon} width={16} className='mr-3' />}
                     type="number"
-                    placeholder="Enter budget"
+                    placeholder="Budget eingeben"
                     className="bg-white shadow-md py-5 w-50"
                     name='budget'
                     onChange={enteringData}
@@ -47,14 +47,14 @@ const BudgetForm = ({ allEvents, allRanges, formData, enteringData, selectedEven
                 <img src={eventIcon} alt="" width={20} />
                 <h1 className="text-xl  text-left pl-3">Ereignis </h1>
             </div>
-            <div className="pb-7 flex space-x-12">
-                <Select placeholder="Veranstaltungsort" prefix={<EnvironmentOutlined />} className="flex-1 rounded-md bg-white shadow-md text-left  h-[64px]"
+            <div className="pb-7 flex ">
+                <Select placeholder="Veranstaltungsort |" prefix={<EnvironmentOutlined />} className="flex-1 rounded-md bg-white shadow-md text-left  h-[64px]"
                     value={selectedLocation?._id}
                     options={selectedEvent?.cities?.map(city => ({ value: city?._id, label: city?.name }))}
                     onChange={selectingLocation}
                 />
             </div>
-            <div className="pb-7 flex space-x-12">
+            <div className="pb-7 flex flex-col space-y-4 lg:space-y-0 lg:flex-row lg:space-x-12 lg:items-start">
                 <RangePicker
                     disabledDate={disabledDate}
                     onChange={(event) => enteringData({ target: { name: "days", value: event } })}
@@ -69,7 +69,7 @@ const BudgetForm = ({ allEvents, allRanges, formData, enteringData, selectedEven
                     value={formData?.hours}
                     max={24}
                 /> </div>
-            <div className="pb-7 flex space-x-4">
+            <div className="pb-7 flex flex-col space-y-4 lg:flex-row lg:space-x-4 lg:items-start">
                 <Select className="bg-white shadow-md rounded-md w-full text-left h-[64px]" placeholder="Die Anzahl der Gäste |" prefix={<EnvironmentOutlined />}
                     options={allRanges.map(range => ({ value: range?._id, label: `${range?.min} - ${range?.max}` }))}
                     onChange={selectingRange}
@@ -85,9 +85,11 @@ const BudgetForm = ({ allEvents, allRanges, formData, enteringData, selectedEven
                     value={formData?.guests}
                 /> */}
             </div>
-            <div className='flex  items-center justify-between pb-5'>
+            <div className='flex flex-col lg:flex-row items-center justify-between pb-5 px-5 lg:px-0'>
                 <BudgetCard budget={formData?.budget} bill={bill} />
-                <Button type="primary" className=" px-10  bg-green rounded-full" onClick={nextPage}>Nächster</Button>
+                <Button type="primary" className="px-10 bg-green rounded-full mt-4 lg:mt-0" onClick={nextPage}>
+                    Nächster
+                </Button>
             </div>
 
         </div>
