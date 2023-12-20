@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Stepers from './Components/Stepers/Stepers';
+import Stepers from './Pages/Stepers/Stepers';
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from "react-toastify";
