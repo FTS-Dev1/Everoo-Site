@@ -5,7 +5,7 @@ import Chart from 'chart.js/auto';
 const PieChart = ({ data, labels }) => {
   const chartRef = useRef(null);
   const chartInstance = useRef(null);
-  console.log("----------------------->", data.labels);
+
   useEffect(() => {
     if (chartInstance.current) {
       chartInstance.current.destroy();
@@ -19,8 +19,7 @@ const PieChart = ({ data, labels }) => {
         labels: data.labels,
         datasets: [
           {
-            data: [],
-            // data: (data.values[0] == 0 && data.values[1] == 0) ? [] : data.values,
+            data: (data.values[0] == 0 && data.values[1] == 0) ? [] : data.values,
             backgroundColor: data.colors,
           },
         ],

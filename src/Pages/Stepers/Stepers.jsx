@@ -132,13 +132,16 @@ const Stepers = () => {
             city: selectedLocation?._id,
             guests: selectedRange?._id,
             bill,
-            services
+            services,
+            hours: [`${formData?.hours[0].$H}-${formData?.hours[0].$m}`, `${formData?.hours[1].$H}-${formData?.hours[1].$m}`]
         }
         let res = await CreatOrderAPI(payload)
         if (res.error != null) {
-            toast.error(res.error)
+            // toast.error(res.error)
+            toast.error("Etwas ist schief gelaufen")
         } else {
-            toast.success(res.data?.message)
+            // toast.success(res.data?.message)
+            toast.success("Formular erfolgreich eingereicht")
             setTimeout(() => {
                 window.location.href = "/"
             }, 1500);

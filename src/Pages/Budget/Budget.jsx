@@ -60,9 +60,10 @@ const BudgetForm = ({ allEvents, allRanges, formData, enteringData, selectedEven
                     onChange={(event) => enteringData({ target: { name: "days", value: event } })}
                     value={formData?.days} className="flex-1 bg-white shadow-md py-5" />
                 <TimePicker.RangePicker 
-                    disabledDate={disabledDate}
-                    onChange={(event) => enteringData({ target: { name: "days", value: event } })}
-                    value={formData?.days} className="flex-1 bg-white shadow-md py-5" />
+                    // disabledDate={disabledDate}
+                    format={"HH:mm"}
+                    onChange={(event) => enteringData({ target: { name: "hours", value: event } })}
+                    value={formData?.hours} className="flex-1 bg-white shadow-md py-5" />
                     
                 {/* <Input
                     prefix={<img src={time} width={16} className='mr-3' />}
