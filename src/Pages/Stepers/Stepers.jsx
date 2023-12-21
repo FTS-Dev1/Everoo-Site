@@ -10,19 +10,19 @@ import hotelService from '../../Assets/svgs/hotelService.svg';
 import eventTech from '../../Assets/svgs/eventTech.svg';
 import eventModule from '../../Assets/svgs/eventModule.svg';
 import decoration from '../../Assets/svgs/decoration.svg';
-import Catering from '../../Pages/Catering/Catering';
+import Catering from '../Catering/Catering';
 
 import catering1 from '../../Assets/Images/catering1.png'
-import CardComponent from '../Card/CardComponent';
-import Budget from '../../Pages/Budget/Budget';
-import ContactForm from '../../Pages/ContactForm/ContactForm';
+import CardComponent from '../../Components/Card/CardComponent';
+import Budget from '../Budget/Budget';
+import ContactForm from '../ContactForm/ContactForm';
 import { CreatOrderAPI, GetAllEventsAPI, GetAllRangesAPI } from 'API/event';
 import { toast } from "react-toastify";
-import NavBar from 'Pages/Header/Header';
+import NavBar from 'Components/Header/Header';
+import { Typography } from 'antd';
+import Footer from 'Components/Footer/Footer';
 
-
-
-
+const { Title } = Typography;
 const { Step } = Steps;
 const Stepers = () => {
 
@@ -45,7 +45,8 @@ const Stepers = () => {
         firstName: "",
         lastName: "",
         email: "",
-        phone: ""
+        phone: "",
+        address: "",
     })
     const [selectedServices, setSelectedServices] = useState({
         Catering: null,
@@ -304,9 +305,14 @@ const Stepers = () => {
 
     return (
         <>
-            <div className="xl:max-w-7xl max-w-4xl md:mx-auto md:pt-6 h-screen">
+            <div className="xl:max-w-7xl max-w-4xl md:mx-auto md:pt-6 ">
                 <NavBar />
-                <div className='pt-20'>
+                <div className=''>
+                    <h1 className='text-green text-4xl font-bold '>Event planner-everoo</h1>
+                </div>
+
+                <div className='py-14'>
+
                     <Steps current={current} onChange={onChange} labelPlacement="vertical">
                         {activeSteps.map((step, index) => (
                             <Step key={index} title={step.title} icon={step.icon} />
@@ -314,6 +320,7 @@ const Stepers = () => {
                     </Steps>
                     <div className="steps-content">{activeSteps[current]?.content}</div>
                 </div>
+                <Footer />
             </div>
         </>
     );
