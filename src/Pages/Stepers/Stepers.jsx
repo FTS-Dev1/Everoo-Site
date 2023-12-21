@@ -114,7 +114,7 @@ const Stepers = () => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         if (!formData.email || !emailRegex.test(formData?.email)) {
-            toast.warn("Invalid Email")
+            toast.warn("Ungültige E-Mail")
             return
         }
 
@@ -163,7 +163,7 @@ const Stepers = () => {
         },
         {
             id: "Location",
-            title: 'Locality',
+            title: 'Standort',
             icon: <img src={catering2} alt="" width={40} height={50} />,
             content: <CardComponent data={selectedEvent?.cities[0]["Location"]} nextPage={nextPage} selectedService={selectedServices["Location"]} selectingService={selectingService} serviceName="Location" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
         },
@@ -175,13 +175,13 @@ const Stepers = () => {
         },
         {
             id: "Shuttle",
-            title: 'Pendelverkehr',
+            title: 'Zubringerdienst',
             icon: <img src={shuttle} alt="" width={40} />,
             content: <CardComponent data={selectedEvent?.cities[0]["Shuttle"]} nextPage={nextPage} selectedService={selectedServices["Shuttle"]} selectingService={selectingService} serviceName="Shuttle" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
         },
         {
             id: "Staff",
-            title: 'Staff',
+            title: 'Personal',
             icon: <img src={staff} alt="" width={40} />,
             content: <CardComponent data={selectedEvent?.cities[0]["Staff"]} nextPage={nextPage} selectedService={selectedServices["Staff"]} selectingService={selectingService} serviceName="Staff" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
         },
@@ -211,7 +211,7 @@ const Stepers = () => {
         },
         {
             id: "Eventmodule",
-            title: 'Event-Modul',
+            title: 'EreignisBaustein',
             icon: <img src={eventModule} alt="" width={40} />,
             content: <CardComponent data={selectedEvent?.cities[0]["Eventmodule"]} nextPage={nextPage} selectedService={selectedServices["Eventmodule"]} selectingService={selectingService} serviceName="Eventmodule" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
         },
