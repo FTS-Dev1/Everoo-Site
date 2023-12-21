@@ -307,19 +307,19 @@ const Stepers = () => {
             <div className="xl:max-w-7xl max-w-4xl md:mx-auto md:pt-6 ">
                 <NavBar />
                 <div className=''>
-                <h1 className='text-green text-4xl font-bold '>Event planner-everoo</h1>
+                    <h1 className='text-green text-4xl font-bold '>Event planner-everoo</h1>
                 </div>
-               
+
                 <div className='py-14'>
-                
-                    <Steps  current={current} onChange={onChange} labelPlacement="vertical">
+
+                    <Steps current={current} onChange={onChange} labelPlacement="vertical">
                         {activeSteps.map((step, index) => (
                             <Step key={index} title={step.title} icon={step.icon} />
                         ))}
                     </Steps>
                     <div className="steps-content">{activeSteps[current]?.content}</div>
                 </div>
-                <Footer/>
+                <Footer />
             </div>
         </>
     );
