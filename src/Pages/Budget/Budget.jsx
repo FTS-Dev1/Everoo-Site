@@ -7,7 +7,7 @@ import guest from '../../Assets/svgs/guest.svg'
 import { DollarOutlined, EnvironmentOutlined } from '@ant-design/icons';
 import BudgetCard from '../../Components/Card/BudgetCard';
 import axios from 'axios';
-import { DatePicker } from 'antd';
+import { DatePicker ,TimePicker} from 'antd';
 import dayjs from "dayjs"
 
 
@@ -59,7 +59,12 @@ const BudgetForm = ({ allEvents, allRanges, formData, enteringData, selectedEven
                     disabledDate={disabledDate}
                     onChange={(event) => enteringData({ target: { name: "days", value: event } })}
                     value={formData?.days} className="flex-1 bg-white shadow-md py-5" />
-                <Input
+                <TimePicker.RangePicker 
+                    disabledDate={disabledDate}
+                    onChange={(event) => enteringData({ target: { name: "days", value: event } })}
+                    value={formData?.days} className="flex-1 bg-white shadow-md py-5" />
+                    
+                {/* <Input
                     prefix={<img src={time} width={16} className='mr-3' />}
                     type="number"
                     placeholder="Anzahl der Stunden |"
@@ -68,7 +73,8 @@ const BudgetForm = ({ allEvents, allRanges, formData, enteringData, selectedEven
                     onChange={enteringData}
                     value={formData?.hours}
                     max={24}
-                /> </div>
+                />  */}
+                </div>
             <div className="pb-7 flex flex-col space-y-4 lg:flex-row lg:space-x-4 lg:items-start">
                 <Select className="bg-white shadow-md rounded-md w-full text-left h-[64px]" placeholder="Die Anzahl der Gäste |" prefix={<EnvironmentOutlined />}
                     options={allRanges.map(range => ({ value: range?._id, label: `${range?.min} - ${range?.max}` }))}
