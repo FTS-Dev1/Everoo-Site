@@ -39,7 +39,7 @@ const Stepers = () => {
     const [bill, setBill] = useState(0);
 
     const [formData, setFormData] = useState({
-        budget: "",
+        budget: 0,
         days: "",
         hours: "",
         firstName: "",
@@ -49,6 +49,7 @@ const Stepers = () => {
     })
     const [selectedServices, setSelectedServices] = useState({
         Catering: null,
+        Location: null,
         Beverage: null,
         Shuttle: null,
         Staff: null,
@@ -157,10 +158,10 @@ const Stepers = () => {
             content: <CardComponent data={selectedEvent?.cities[0]["Catering"]} nextPage={nextPage} selectedService={selectedServices["Catering"]} selectingService={selectingService} serviceName="Catering" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
         },
         {
-            id: "Locality",
+            id: "Location",
             title: 'Locality',
             icon: <img src={catering2} alt="" width={40} height={50} />,
-            content: <CardComponent data={selectedEvent?.cities[0]["Catering"]} nextPage={nextPage} selectedService={selectedServices["Catering"]} selectingService={selectingService} serviceName="Catering" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
+            content: <CardComponent data={selectedEvent?.cities[0]["Location"]} nextPage={nextPage} selectedService={selectedServices["Location"]} selectingService={selectingService} serviceName="Location" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
         },
         {
             id: "Beverage",
@@ -306,7 +307,7 @@ const Stepers = () => {
             <div className="xl:max-w-7xl max-w-4xl md:mx-auto md:pt-6 h-screen">
                 <NavBar />
                 <div className='pt-20'>
-                    <Steps  current={current} onChange={onChange} labelPlacement="vertical">
+                    <Steps current={current} onChange={onChange} labelPlacement="vertical">
                         {activeSteps.map((step, index) => (
                             <Step key={index} title={step.title} icon={step.icon} />
                         ))}

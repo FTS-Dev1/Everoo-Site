@@ -5,7 +5,7 @@ import Chart from 'chart.js/auto';
 const PieChart = ({ data, labels }) => {
   const chartRef = useRef(null);
   const chartInstance = useRef(null);
-
+  console.log("----------------------->", data.labels);
   useEffect(() => {
     if (chartInstance.current) {
       chartInstance.current.destroy();
@@ -19,16 +19,22 @@ const PieChart = ({ data, labels }) => {
         labels: data.labels,
         datasets: [
           {
-            data: data.values,
+            data: [],
+            // data: (data.values[0] == 0 && data.values[1] == 0) ? [] : data.values,
             backgroundColor: data.colors,
           },
         ],
       },
       options: {
         plugins: {
+          emptyDoughnut: {
+            color: 'rgba(0, 0, 0)',
+            width: 2,
+            // radiusDecrease: 20
+          },
           legend: {
             display: true,
-            position: 'bottom', 
+            position: 'bottom',
             padding: {
               top: 10, // You can adjust these values as needed
               bottom: 10,
@@ -37,9 +43,8 @@ const PieChart = ({ data, labels }) => {
             },
             labels: {
               boxWidth: 10,
-              fontSize: 12, 
+              fontSize: 12,
             },
-            
           },
         },
       },
