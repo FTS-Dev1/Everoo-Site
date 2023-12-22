@@ -10,6 +10,8 @@ import hotelService from '../../Assets/svgs/hotelService.svg';
 import eventTech from '../../Assets/svgs/eventTech.svg';
 import eventModule from '../../Assets/svgs/eventModule.svg';
 import decoration from '../../Assets/svgs/decoration.svg';
+import location from '../../Assets/svgs/location.svg';
+import personInfo from '../../Assets/svgs/personInfo.svg';
 import Catering from '../Catering/Catering';
 
 import catering1 from '../../Assets/Images/catering1.png'
@@ -154,14 +156,14 @@ const Stepers = () => {
     const steps = [
         {
             title: 'Budget',
-            icon: <img src={catering} alt="" width={40} height={50} />,
+            icon: <img src={catering}  alt="" width={40} height={50} />,
             content: <Budget allEvents={eventData} allRanges={rangeData} selectedEvent={selectedEvent} selectedRange={selectedRange} selectedLocation={selectedLocation} setSelectedEvent={setSelectedEvent} formData={formData} enteringData={enteringData} selectingEvent={selectingEvent} selectingLocation={selectingLocation} selectingRange={selectingRange} nextPage={nextPage} bill={bill} />,
             isDefault: true,
         },
         {
             id: "Location",
             title: 'Standort',
-            icon: <img src={catering2} alt="" width={40} height={50} />,
+            icon: <img src={location} className=' border-2 rounded-full border-grey bg-white' alt="" width={40} height={50} />,
             content: <CardComponent data={selectedEvent?.cities[0]["Location"]} nextPage={nextPage} selectedService={selectedServices["Location"]} selectingService={selectingService} serviceName="Location" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
         },
         {
@@ -226,7 +228,7 @@ const Stepers = () => {
         },
         {
             title: 'Personal Info',
-            icon: <img src={catering} alt="" width={40} height={50} />,
+            icon: <img src={personInfo} className=' border-2 rounded-full border-grey bg-white' alt="" width={40} height={50} />,
             content: <ContactForm allEvents={eventData} selectedEvent={selectedEvent} setSelectedEvent={setSelectedEvent} formData={formData} enteringData={enteringData} selectingEvent={selectingEvent} nextPage={nextPage} submitForm={submitForm} bill={bill} loading={loading} />,
             isDefault: true,
             end: true
