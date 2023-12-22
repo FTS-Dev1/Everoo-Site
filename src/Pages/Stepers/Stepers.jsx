@@ -10,7 +10,7 @@ import hotelService from '../../Assets/svgs/hotelService.svg';
 import eventTech from '../../Assets/svgs/eventTech.svg';
 import eventModule from '../../Assets/svgs/eventModule.svg';
 import decoration from '../../Assets/svgs/decoration.svg';
-import location from '../../Assets/svgs/location-sharp.svg';
+import location from '../../Assets/svgs/location.svg';
 import personInfo from '../../Assets/svgs/personInfo.svg';
 import Catering from '../Catering/Catering';
 
