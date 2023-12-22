@@ -7,7 +7,7 @@ import guest from '../../Assets/svgs/guest.svg'
 import { DollarOutlined, EnvironmentOutlined } from '@ant-design/icons';
 import BudgetCard from '../../Components/Card/BudgetCard';
 import axios from 'axios';
-import { DatePicker ,TimePicker} from 'antd';
+import { DatePicker, TimePicker } from 'antd';
 import dayjs from "dayjs"
 
 
@@ -56,15 +56,17 @@ const BudgetForm = ({ allEvents, allRanges, formData, enteringData, selectedEven
             </div>
             <div className="pb-7 flex flex-col space-y-4 lg:space-y-0 lg:flex-row lg:space-x-12 lg:items-start">
                 <RangePicker
+                    placeholder={["Startdatum", "Endtermin"]}
                     disabledDate={disabledDate}
                     onChange={(event) => enteringData({ target: { name: "days", value: event } })}
                     value={formData?.days} className="flex-1 bg-white shadow-md py-5" />
-                <TimePicker.RangePicker 
+                <TimePicker.RangePicker
                     // disabledDate={disabledDate}
+                    placeholder={["Startzeit", "Endzeit"]}
                     format={"HH:mm"}
                     onChange={(event) => enteringData({ target: { name: "hours", value: event } })}
                     value={formData?.hours} className="flex-1 bg-white shadow-md py-5" />
-                    
+
                 {/* <Input
                     prefix={<img src={time} width={16} className='mr-3' />}
                     type="number"
@@ -75,7 +77,7 @@ const BudgetForm = ({ allEvents, allRanges, formData, enteringData, selectedEven
                     value={formData?.hours}
                     max={24}
                 />  */}
-                </div>
+            </div>
             <div className="pb-7 flex flex-col space-y-4 lg:flex-row lg:space-x-4 lg:items-start">
                 <Select className="bg-white shadow-md rounded-md w-full text-left h-[64px]" placeholder="Die Anzahl der Gäste |" prefix={<EnvironmentOutlined />}
                     options={allRanges.map(range => ({ value: range?._id, label: `${range?.min} - ${range?.max}` }))}

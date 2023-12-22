@@ -39,7 +39,7 @@ const Stepers = () => {
     const [bill, setBill] = useState(0);
 
     const [formData, setFormData] = useState({
-        budget: 0,
+        budget: "",
         days: "",
         hours: "",
         firstName: "",
@@ -153,7 +153,7 @@ const Stepers = () => {
             title: 'Budget',
             icon: <img src={catering} alt="" width={40} height={50} />,
             content: <Budget allEvents={eventData} allRanges={rangeData} selectedEvent={selectedEvent} selectedRange={selectedRange} selectedLocation={selectedLocation} setSelectedEvent={setSelectedEvent} formData={formData} enteringData={enteringData} selectingEvent={selectingEvent} selectingLocation={selectingLocation} selectingRange={selectingRange} nextPage={nextPage} bill={bill} />,
-            isDefault: true
+            isDefault: true,
         },
         {
             id: "Catering",
@@ -255,7 +255,8 @@ const Stepers = () => {
         if (res.error != null) {
             toast.error(res.error)
         } else {
-            setRangeData(res.data?.result || [])
+            let sortRange = res.data?.result.sort((a, b) => a?.min - b?.min)
+            setRangeData(sortRange || [].sort)
         }
     }
     useEffect(() => {
@@ -316,11 +317,11 @@ const Stepers = () => {
 
                 <div className='py-14'>
 
-                    <Steps current={current} onChange={onChange} labelPlacement="vertical">
-                        {activeSteps.map((step, index) => (
-                            <Step key={index} title={step.title} icon={step.icon} />
+                    <Steps current={current} onChange={onChange} labelPlacement="vertical" items={activeSteps} />
+                    {/* {activeSteps.map((step, index) => (
+                            <Step key={index} title={step.title} icon={step.icon} status={step?.status} />
                         ))}
-                    </Steps>
+                    </Steps> */}
                     <div className="steps-content">{activeSteps[current]?.content}</div>
                 </div>
                 <Footer />
