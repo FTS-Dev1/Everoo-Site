@@ -10,6 +10,8 @@ import hotelService from '../../Assets/svgs/hotelService.svg';
 import eventTech from '../../Assets/svgs/eventTech.svg';
 import eventModule from '../../Assets/svgs/eventModule.svg';
 import decoration from '../../Assets/svgs/decoration.svg';
+import location from '../../Assets/svgs/location-sharp.svg';
+import personInfo from '../../Assets/svgs/personInfo.svg';
 import Catering from '../Catering/Catering';
 
 import catering1 from '../../Assets/Images/catering1.png'
@@ -50,6 +52,7 @@ const Stepers = () => {
     })
     const [selectedServices, setSelectedServices] = useState({
         Catering: null,
+        Location: null,
         Beverage: null,
         Shuttle: null,
         Staff: null,
@@ -60,6 +63,7 @@ const Stepers = () => {
         Eventmodule: null,
         Dekoration: null,
     })
+    const [loading, setLoading] = useState(false)
 
     const enteringData = (event) => {
         let { name, value } = event.target;
@@ -110,10 +114,11 @@ const Stepers = () => {
     }
 
     const submitForm = async () => {
+        setLoading(true);
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         if (!formData.email || !emailRegex.test(formData?.email)) {
-            toast.warn("Invalid Email")
+            toast.warn("Ungültige E-Mail")
             return
         }
 
@@ -131,35 +136,39 @@ const Stepers = () => {
             city: selectedLocation?._id,
             guests: selectedRange?._id,
             bill,
-            services
+            services,
+            hours: [`${formData?.hours[0].$H}-${formData?.hours[0].$m}`, `${formData?.hours[1].$H}-${formData?.hours[1].$m}`]
         }
         let res = await CreatOrderAPI(payload)
         if (res.error != null) {
-            toast.error(res.error)
+            // toast.error(res.error)
+            toast.error("Etwas ist schief gelaufen")
         } else {
-            toast.success(res.data?.message)
+            // toast.success(res.data?.message)
+            toast.success("Formular erfolgreich eingereicht")
             setTimeout(() => {
                 window.location.href = "/"
             }, 1500);
         }
+        setLoading(false)
     }
 
     const steps = [
         {
             title: 'Budget',
-            icon: <img src={catering} alt="" width={40} height={50} />,
+            icon: <img src={catering}  alt="" width={40} height={50} />,
             content: <Budget allEvents={eventData} allRanges={rangeData} selectedEvent={selectedEvent} selectedRange={selectedRange} selectedLocation={selectedLocation} setSelectedEvent={setSelectedEvent} formData={formData} enteringData={enteringData} selectingEvent={selectingEvent} selectingLocation={selectingLocation} selectingRange={selectingRange} nextPage={nextPage} bill={bill} />,
-            isDefault: true
+            isDefault: true,
+        },
+        {
+            id: "Location",
+            title: 'Standort',
+            icon: <img src={location} className=' border-2 rounded-full border-grey bg-white' alt="" width={40} height={50} />,
+            content: <CardComponent data={selectedEvent?.cities[0]["Location"]} nextPage={nextPage} selectedService={selectedServices["Location"]} selectingService={selectingService} serviceName="Location" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
         },
         {
             id: "Catering",
             title: 'Verpflegung',
-            icon: <img src={catering2} alt="" width={40} height={50} />,
-            content: <CardComponent data={selectedEvent?.cities[0]["Catering"]} nextPage={nextPage} selectedService={selectedServices["Catering"]} selectingService={selectingService} serviceName="Catering" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
-        },
-        {
-            id: "Locality",
-            title: 'Locality',
             icon: <img src={catering2} alt="" width={40} height={50} />,
             content: <CardComponent data={selectedEvent?.cities[0]["Catering"]} nextPage={nextPage} selectedService={selectedServices["Catering"]} selectingService={selectingService} serviceName="Catering" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
         },
@@ -170,14 +179,8 @@ const Stepers = () => {
             content: <CardComponent data={selectedEvent?.cities[0]["Beverage"]} nextPage={nextPage} selectedService={selectedServices["Beverage"]} selectingService={selectingService} serviceName="Beverage" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
         },
         {
-            id: "Shuttle",
-            title: 'Pendelverkehr',
-            icon: <img src={shuttle} alt="" width={40} />,
-            content: <CardComponent data={selectedEvent?.cities[0]["Shuttle"]} nextPage={nextPage} selectedService={selectedServices["Shuttle"]} selectingService={selectingService} serviceName="Shuttle" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
-        },
-        {
             id: "Staff",
-            title: 'Staff',
+            title: 'Personal',
             icon: <img src={staff} alt="" width={40} />,
             content: <CardComponent data={selectedEvent?.cities[0]["Staff"]} nextPage={nextPage} selectedService={selectedServices["Staff"]} selectingService={selectingService} serviceName="Staff" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
         },
@@ -186,6 +189,12 @@ const Stepers = () => {
             title: 'Ausstattung',
             icon: <img src={ausatting} alt="" width={40} />,
             content: <CardComponent data={selectedEvent?.cities[0]["Ausstattung"]} nextPage={nextPage} selectedService={selectedServices["Ausstattung"]} selectingService={selectingService} serviceName="Ausstattung" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
+        },
+        {
+            id: "Shuttle",
+            title: 'Zubringerdienst',
+            icon: <img src={shuttle} alt="" width={40} />,
+            content: <CardComponent data={selectedEvent?.cities[0]["Shuttle"]} nextPage={nextPage} selectedService={selectedServices["Shuttle"]} selectingService={selectingService} serviceName="Shuttle" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
         },
         {
             id: "Hotelmanagement",
@@ -207,7 +216,7 @@ const Stepers = () => {
         },
         {
             id: "Eventmodule",
-            title: 'Event-Modul',
+            title: 'EreignisBaustein',
             icon: <img src={eventModule} alt="" width={40} />,
             content: <CardComponent data={selectedEvent?.cities[0]["Eventmodule"]} nextPage={nextPage} selectedService={selectedServices["Eventmodule"]} selectingService={selectingService} serviceName="Eventmodule" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
         },
@@ -219,8 +228,8 @@ const Stepers = () => {
         },
         {
             title: 'Personal Info',
-            icon: <img src={catering} alt="" width={40} height={50} />,
-            content: <ContactForm allEvents={eventData} selectedEvent={selectedEvent} setSelectedEvent={setSelectedEvent} formData={formData} enteringData={enteringData} selectingEvent={selectingEvent} nextPage={nextPage} submitForm={submitForm} bill={bill} />,
+            icon: <img src={personInfo} className=' border-2 rounded-full border-grey bg-white' alt="" width={40} height={50} />,
+            content: <ContactForm allEvents={eventData} selectedEvent={selectedEvent} setSelectedEvent={setSelectedEvent} formData={formData} enteringData={enteringData} selectingEvent={selectingEvent} nextPage={nextPage} submitForm={submitForm} bill={bill} loading={loading} />,
             isDefault: true,
             end: true
         },
@@ -251,7 +260,8 @@ const Stepers = () => {
         if (res.error != null) {
             toast.error(res.error)
         } else {
-            setRangeData(res.data?.result || [])
+            let sortRange = res.data?.result.sort((a, b) => a?.min - b?.min)
+            setRangeData(sortRange || [].sort)
         }
     }
     useEffect(() => {
@@ -304,7 +314,7 @@ const Stepers = () => {
 
     return (
         <>
-            <div className="xl:max-w-7xl max-w-4xl md:mx-auto md:pt-6 ">
+            <div className="xl:max-w-8xl max-w-7xl md:mx-auto md:pt-6 ">
                 <NavBar />
                 <div className=''>
                     <h1 className='text-green text-4xl font-bold '>Event planner-everoo</h1>
@@ -312,11 +322,11 @@ const Stepers = () => {
 
                 <div className='py-14'>
 
-                    <Steps current={current} onChange={onChange} labelPlacement="vertical">
-                        {activeSteps.map((step, index) => (
-                            <Step key={index} title={step.title} icon={step.icon} />
+                    <Steps current={current} onChange={onChange} labelPlacement="vertical" items={activeSteps} />
+                    {/* {activeSteps.map((step, index) => (
+                            <Step key={index} title={step.title} icon={step.icon} status={step?.status} />
                         ))}
-                    </Steps>
+                    </Steps> */}
                     <div className="steps-content">{activeSteps[current]?.content}</div>
                 </div>
                 <Footer />

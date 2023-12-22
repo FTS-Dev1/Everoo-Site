@@ -1,0 +1,33 @@
+/* src/index.css */
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #FCFCFC inset !important;
+  }
+
+
+  .ant-steps-item-active {
+    .ant-steps-item-title {
+      font-size: .8rem;
+      font-weight: bold !important;
+    }
+  }
+
+}
+
+code {
+  font-family: 'Montserrat', sans-serif,
+}

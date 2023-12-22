@@ -13,7 +13,7 @@ const { Option } = Select;
 
 
 
-const ContactForm = ({ allEvents, formData, enteringData, selectedEvent, selectingEvent, nextPage, submitForm, bill }) => {
+const ContactForm = ({ allEvents, formData, enteringData, selectedEvent, selectingEvent, nextPage, submitForm, bill, loading }) => {
 
 
     return (
@@ -59,7 +59,7 @@ const ContactForm = ({ allEvents, formData, enteringData, selectedEvent, selecti
                     onChange={enteringData}
                     value={formData?.email}
                 />
-               <Input
+                <Input
                     prefix={<img src={phone} width={16} className='mr-3' />}
                     type="number"
                     placeholder="Telefonnummer"
@@ -87,7 +87,7 @@ const ContactForm = ({ allEvents, formData, enteringData, selectedEvent, selecti
             </div>
             <div className='flex flex-col lg:flex-row items-center justify-between pb-5 px-5 lg:px-0'>
                 <BudgetCard budget={formData?.budget} bill={bill} />
-                <Button type="primary" className=" px-10  bg-green rounded-full mt-4 lg:mt-0" onClick={submitForm}>Einreichen</Button>
+                <Button loading={loading} type="primary" className=" px-10  bg-green rounded-full mt-4 lg:mt-0" onClick={submitForm}>Einreichen</Button>
             </div>
 
         </div>

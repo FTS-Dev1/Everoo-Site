@@ -75,7 +75,7 @@ const CardComponent = ({ data, nextPage, serviceName, selectedService, selecting
                                         <h2 className='font-bold text-xl mb-2 leading-6 text-grey group-hover:text-green'>{card.title}</h2>
                                         <button className='bg-green hover:shadow-lg text-white font-bold py-2 px-4 rounded'>$ {card.price}</button>
                                     </div>
-                                    <p className='mt-5 text-sm leading-6 text-gray-600 text-left'>{card.description}</p>
+                                    <p className='mt-5 text-sm leading-6 text-gray-600 text-left'>{card.description && card.description.length >= 100 ? `${card.description.slice(0, 100)} ...` : card.description}</p>
                                     <div className='flex justify-end pt-4 pb-5'>
                                         <img src={arrow}>
                                         </img>
