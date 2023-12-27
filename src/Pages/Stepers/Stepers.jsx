@@ -137,7 +137,7 @@ const Stepers = () => {
             guests: selectedRange?._id,
             bill,
             services,
-            hours: [`${formData?.hours[0].$H}-${formData?.hours[0].$m}`, `${formData?.hours[1].$H}-${formData?.hours[1].$m}`]
+            hours: [`${formData?.hours[0].$H}:${formData?.hours[0].$m}`, `${formData?.hours[1].$H}:${formData?.hours[1].$m}`]
         }
         let res = await CreatOrderAPI(payload)
         if (res.error != null) {
