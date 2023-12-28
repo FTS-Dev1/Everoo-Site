@@ -9,6 +9,7 @@ import BudgetCard from '../../Components/Card/BudgetCard';
 import axios from 'axios';
 import { DatePicker, TimePicker } from 'antd';
 import dayjs from "dayjs"
+import { toast } from "react-toastify";
 
 
 
@@ -20,6 +21,15 @@ const BudgetForm = ({ allEvents, allRanges, formData, enteringData, selectedEven
         // Can not select days before today and today
         return current && current < dayjs().startOf('day');
     };
+
+    const goNextPage = () => {
+        if (!formData.budget || !formData.hours || !formData.days || !selectedEvent || !selectedLocation || !selectedRange) {
+            console.log("---------------->", formData, selectedEvent, selectedRange, selectedLocation);
+            toast.warn("Bitte alle Felder ausfüllen")
+            return
+        }
+        nextPage()
+    }
 
     return (
         <div className="container  mt-8 px-5 lg:px-0">
@@ -80,9 +90,9 @@ const BudgetForm = ({ allEvents, allRanges, formData, enteringData, selectedEven
             </div>
             <div className="pb-7 flex flex-col space-y-4 lg:flex-row lg:space-x-4 lg:items-start">
                 <Select className="bg-white shadow-md rounded-md w-full text-left h-[64px]" placeholder="Die Anzahl der Gäste |" prefix={<EnvironmentOutlined />}
+                    value={selectedRange?._id}
                     options={allRanges.map(range => ({ value: range?._id, label: `${range?.min} - ${range?.max}` }))}
                     onChange={selectingRange}
-                    value={selectedRange?._id}
                 />
                 {/* <Input
                     prefix={<img src={guest} width={16} className='mr-3' />}
@@ -96,7 +106,7 @@ const BudgetForm = ({ allEvents, allRanges, formData, enteringData, selectedEven
             </div>
             <div className='flex flex-col lg:flex-row items-center justify-between pb-5 px-5 lg:px-0'>
                 <BudgetCard budget={formData?.budget} bill={bill} />
-                <Button type="primary" className="px-10 bg-green rounded-full mt-4 lg:mt-0" onClick={nextPage}>
+                <Button type="primary" className="px-10 bg-green rounded-full mt-4 lg:mt-0" onClick={goNextPage}>
                     Nächster
                 </Button>
             </div>

@@ -110,6 +110,13 @@ const Stepers = () => {
 
 
     const nextPage = () => {
+        // if (current == 0) {
+        //     if (!formData.budget || !formData.hours || !formData.days || !selectedEvent || !selectedLocation || !selectedRange) {
+        //         console.log("---------------->", formData, selectedEvent, selectedRange, selectedLocation);
+        //         toast.error("Bitte alle Felder ausfüllen")
+        //         return
+        //     }
+        // }
         setCurrent(current + 1)
     }
 
@@ -117,8 +124,15 @@ const Stepers = () => {
         setLoading(true);
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+        if (!formData.address || !formData.budget || !formData.days || !formData.hours || !formData.email || !formData.firstName || !formData.lastName || !formData.phone || !selectedEvent || !selectedLocation || !selectedRange) {
+            toast.warn("Bitte alle Felder ausfüllen")
+            setLoading(false)
+            return
+        }
+
         if (!formData.email || !emailRegex.test(formData?.email)) {
             toast.warn("Ungültige E-Mail")
+            setLoading(false)
             return
         }
 
@@ -152,11 +166,10 @@ const Stepers = () => {
         }
         setLoading(false)
     }
-
     const steps = [
         {
             title: 'Budget',
-            icon: <img src={catering}  alt="" width={40} height={50} />,
+            icon: <img src={catering} alt="" width={40} height={50} />,
             content: <Budget allEvents={eventData} allRanges={rangeData} selectedEvent={selectedEvent} selectedRange={selectedRange} selectedLocation={selectedLocation} setSelectedEvent={setSelectedEvent} formData={formData} enteringData={enteringData} selectingEvent={selectingEvent} selectingLocation={selectingLocation} selectingRange={selectingRange} nextPage={nextPage} bill={bill} />,
             isDefault: true,
         },
@@ -310,7 +323,7 @@ const Stepers = () => {
             })
         }
         setActiveSteps(findActiveSteps)
-    }, [eventData, selectedEvent, selectedLocation, formData, selectedServices, current, bill])
+    }, [eventData, selectedEvent, selectedLocation, selectedRange, formData, selectedServices, current, bill, loading])
 
     return (
         <>
