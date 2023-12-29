@@ -26,6 +26,10 @@ body {
     }
   }
 
+  .ant-menu-item:hover::after{
+    border-bottom-color:#2c9a94 !important
+  }
+
 }
 
 code {

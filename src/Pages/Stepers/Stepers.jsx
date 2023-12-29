@@ -66,12 +66,18 @@ const Stepers = () => {
         Dekoration: null,
     })
     const [loading, setLoading] = useState(false)
+    const [budgetNotification, setBudgetNotification] = useState(false)
 
     const enteringData = (event) => {
         let { name, value } = event.target;
         if (name == "hours") {
             if (value >= 25) {
                 toast.warn("Please Enter less than 25 Hours")
+                return
+            }
+        }
+        if (name == "budget") {
+            if (value < 0 || value > 9999999) {
                 return
             }
         }
@@ -245,7 +251,7 @@ const Stepers = () => {
         {
             title: 'Personal Info',
             // icon: <img src={personInfo} className=' border-2 rounded-full border-grey bg-white' alt="" width={40} height={50} />,
-            icon: <div className=' border-2 rounded-full border-grey bg-white p-1'><BsFillPersonPlusFill color='#566476'/></div>,
+            icon: <div className=' border-2 rounded-full border-grey bg-white p-1'><BsFillPersonPlusFill color='#566476' /></div>,
             content: <ContactForm allEvents={eventData} selectedEvent={selectedEvent} setSelectedEvent={setSelectedEvent} formData={formData} enteringData={enteringData} selectingEvent={selectingEvent} nextPage={nextPage} submitForm={submitForm} bill={bill} loading={loading} />,
             isDefault: true,
             end: true
@@ -328,6 +334,15 @@ const Stepers = () => {
         }
         setActiveSteps(findActiveSteps)
     }, [eventData, selectedEvent, selectedLocation, selectedRange, formData, selectedServices, current, bill, loading])
+
+    useEffect(() => {
+        if (!budgetNotification) {
+            if (formData.budget < bill) {
+                toast.warn("Außerhalb des Budgets")
+                setBudgetNotification(true)
+            }
+        }
+    }, [formData.budget, bill])
 
     return (
         <>
