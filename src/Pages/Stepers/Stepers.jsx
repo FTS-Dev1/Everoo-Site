@@ -23,6 +23,8 @@ import { toast } from "react-toastify";
 import NavBar from 'Components/Header/Header';
 import { Typography } from 'antd';
 import Footer from 'Components/Footer/Footer';
+import { FaLocationDot } from "react-icons/fa6";
+import { BsFillPersonPlusFill } from "react-icons/bs";
 
 const { Title } = Typography;
 const { Step } = Steps;
@@ -176,7 +178,8 @@ const Stepers = () => {
         {
             id: "Location",
             title: 'Standort',
-            icon: <img src={location} className=' border-2 rounded-full border-grey bg-white' alt="" width={40} height={50} />,
+            // icon: <img src={location} className=' border-2 rounded-full border-grey bg-white' alt="" width={40} height={50} />,
+            icon: <div className=' border-2 rounded-full border-grey bg-white p-1'><FaLocationDot color='#566476' /></div>,
             content: <CardComponent data={selectedEvent?.cities[0]["Location"]} nextPage={nextPage} selectedService={selectedServices["Location"]} selectingService={selectingService} serviceName="Location" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
         },
         {
@@ -241,7 +244,8 @@ const Stepers = () => {
         },
         {
             title: 'Personal Info',
-            icon: <img src={personInfo} className=' border-2 rounded-full border-grey bg-white' alt="" width={40} height={50} />,
+            // icon: <img src={personInfo} className=' border-2 rounded-full border-grey bg-white' alt="" width={40} height={50} />,
+            icon: <div className=' border-2 rounded-full border-grey bg-white p-1'><BsFillPersonPlusFill color='#566476'/></div>,
             content: <ContactForm allEvents={eventData} selectedEvent={selectedEvent} setSelectedEvent={setSelectedEvent} formData={formData} enteringData={enteringData} selectingEvent={selectingEvent} nextPage={nextPage} submitForm={submitForm} bill={bill} loading={loading} />,
             isDefault: true,
             end: true
