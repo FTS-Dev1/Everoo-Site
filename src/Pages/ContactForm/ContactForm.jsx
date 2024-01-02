@@ -3,11 +3,13 @@ import React, { useState } from 'react';
 import { Input, Select, Button, Slider } from 'antd';
 import eventIcon from '../../Assets/svgs/userIcon.svg'
 import mail from '../../Assets/svgs/mail.svg'
-import phone from '../../Assets/svgs/phone.svg'
+import { ReactComponent as PhoneIcon } from '../../Assets/svgs/phone.svg'
 import address from '../../Assets/svgs/address.svg'
 import { DollarOutlined, EnvironmentOutlined } from '@ant-design/icons';
 import BudgetCard from '../../Components/Card/BudgetCard';
 import axios from 'axios';
+import PhoneInput from "react-phone-number-input"
+import 'react-phone-number-input/style.css'
 
 const { Option } = Select;
 
@@ -48,7 +50,7 @@ const ContactForm = ({ allEvents, formData, enteringData, selectedEvent, selecti
                 <img src={mail} alt="" width={20} />
                 <h1 className="text-xl  text-left pl-3">Kontakt Infos</h1>
             </div>
-            <div className="pb-7 flex flex-col space-y-4 lg:space-y-0 lg:flex-row lg:space-x-12 lg:items-start">
+            <div className="pb-7 flex flex-col space-y-4 lg:space-y-0 lg:flex-row lg:items-start gap-12">
                 {/* Add options for Location */}
                 <Input
                     prefix={<img src={mail} width={16} className='mr-3' />}
@@ -59,7 +61,15 @@ const ContactForm = ({ allEvents, formData, enteringData, selectedEvent, selecti
                     onChange={enteringData}
                     value={formData?.email}
                 />
-                <Input
+                <PhoneInput
+                    internationalIcon={PhoneIcon}
+                    placeholder="Telefonnummer"
+                    className="bg-white shadow-md py-5 w-50 pl-5"
+                    name='phone'
+                    onChange={(value) => enteringData({ target: { name: "phone", value } })}
+                    value={formData?.phone}
+                />
+                {/* <PhoneInput
                     prefix={<img src={phone} width={16} className='mr-3' />}
                     type="number"
                     placeholder="Telefonnummer"
@@ -67,7 +77,7 @@ const ContactForm = ({ allEvents, formData, enteringData, selectedEvent, selecti
                     name='phone'
                     onChange={enteringData}
                     value={formData?.phone}
-                />
+                /> */}
 
             </div>
             <div className='flex items-center pb-3'>

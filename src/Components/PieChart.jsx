@@ -32,6 +32,7 @@ const PieChart = ({ data, labels }) => {
             // radiusDecrease: 20
           },
           legend: {
+            onClick: null,
             display: true,
             position: 'bottom',
             padding: {
