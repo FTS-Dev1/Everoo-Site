@@ -79,6 +79,20 @@ const Stepers = () => {
         if (name == "budget") {
             if (value < 0 || value > 9999999) {
                 return
+            } else {
+                setSelectedServices({
+                    Catering: null,
+                    Location: null,
+                    Beverage: null,
+                    Shuttle: null,
+                    Staff: null,
+                    Ausstattung: null,
+                    Hotelmanagement: null,
+                    Prasente: null,
+                    Veranstaltungstechnik: null,
+                    Eventmodule: null,
+                    Dekoration: null,
+                })
             }
         }
         setFormData({
@@ -99,6 +113,19 @@ const Stepers = () => {
     const selectingRange = (id) => {
         let findRange = rangeData.find(range => range?._id == id)
         setSelectedRange(findRange)
+        setSelectedServices({
+            Catering: null,
+            Location: null,
+            Beverage: null,
+            Shuttle: null,
+            Staff: null,
+            Ausstattung: null,
+            Hotelmanagement: null,
+            Prasente: null,
+            Veranstaltungstechnik: null,
+            Eventmodule: null,
+            Dekoration: null,
+        })
     }
 
     const selectingService = (id, data) => {
