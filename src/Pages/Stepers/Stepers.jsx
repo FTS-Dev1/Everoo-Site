@@ -363,12 +363,12 @@ const Stepers = () => {
     }, [eventData, selectedEvent, selectedLocation, selectedRange, formData, selectedServices, current, bill, loading])
 
     useEffect(() => {
-        if (!budgetNotification) {
+        // if (!budgetNotification) {
             if (formData.budget < bill) {
                 toast.warn("Außerhalb des Budgets")
                 setBudgetNotification(true)
             }
-        }
+        // }
     }, [formData.budget, bill])
 
     return (
