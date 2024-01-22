@@ -165,8 +165,17 @@
 .ant-menu-light>.ant-menu.ant-menu-horizontal>.ant-menu-item-selected,
 .ant-menu-light.ant-menu-horizontal>.ant-menu-submenu-selected,
 .ant-menu-light>.ant-menu.ant-menu-horizontal>.ant-menu-submenu-selected {
-  color: #5E9894;
+  color: #5E9894 !important;
   background-color: transparent;
+}
+
+.ant-menu-item-selected {
+  color: #5E9894 !important;
+  background-color: transparent;
+
+  &::after {
+    border-bottom-color: #5E9894 !important;
+  }
 }
 
 .ant-steps {
@@ -174,4 +183,12 @@
   width: 100%;
   text-align: initial;
   /* justify-content: center; */
+}
+
+.customeFontFamily {
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+.ant-menu-root {
+  width: 100% !important;
 }

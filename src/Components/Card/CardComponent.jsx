@@ -12,7 +12,7 @@ import arrow from 'Assets/svgs/arrow.svg'
 
 
 
-const CardComponent = ({ data, nextPage, serviceName, selectedService, selectingService, formData, bill, selectedEvent, selectedLocation, selectedRange }) => {
+const CardComponent = ({ data, nextPage, serviceName, selectedService, selectingService, formData, bill, selectedEvent, selectingLocation, selectedLocation, selectedRange, rangeData, selectingRange }) => {
     return (
 
         <div className='px-5 mt-10 grid grid-cols-1 gap-x-2 sm:gap-x-8 gap-y-16 py-10 sm:mb-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-12'>
@@ -23,12 +23,8 @@ const CardComponent = ({ data, nextPage, serviceName, selectedService, selecting
                         <Dropdown
                             className='w-80'
                             menu={{
-                                items: [
-                                    {
-                                        label: selectedLocation?.name,
-                                        key: '0',
-                                    }
-                                ],
+                                items: selectedEvent?.cities?.map(city => ({ label: <div style={selectedLocation?._id == city?._id ? { fontWeight: "bold" } : {}}> {city.name} </div>, key: city?._id })),
+                                onClick: (e) => selectingLocation(e?.key)
                             }}
                         >
                             <Space>
@@ -42,17 +38,13 @@ const CardComponent = ({ data, nextPage, serviceName, selectedService, selecting
                         <Dropdown
                             className='w-80'
                             menu={{
-                                items: [
-                                    {
-                                        label: `${selectedRange?.min} - ${selectedRange?.max}`,
-                                        key: '0',
-                                    }
-                                ],
+                                items: rangeData.map(range => ({ label: <div style={selectedRange?._id == range?._id ? { fontWeight: "bold" } : {}}> {`${range?.min} - ${range?.max}`} </div>, key: range?._id })),
+                                onClick: (e) => selectingRange(e?.key)
                             }}
                         >
 
                             <Space>
-                                Gast Wut
+                                Anzahl Gäste
                                 <DownOutlined />
                             </Space>
                         </Dropdown>
@@ -73,7 +65,7 @@ const CardComponent = ({ data, nextPage, serviceName, selectedService, selecting
                                 <div className='px-6 py-4 group '>
                                     <div className='flex justify-between items-center'>
                                         <h2 className='font-bold text-xl mb-2 leading-6 text-grey group-hover:text-green'>{card.title}</h2>
-                                        <button className='bg-green hover:shadow-lg text-white font-bold py-2 px-4 rounded'>$ {card.price}</button>
+                                        <button className='bg-green hover:shadow-lg text-white font-bold py-2 px-4 rounded'>€ {card.price}</button>
                                     </div>
                                     <p className='mt-5 text-sm leading-6 text-gray-600 text-left'>{card.description && card.description.length >= 100 ? `${card.description.slice(0, 100)} ...` : card.description}</p>
                                     <div className='flex justify-end pt-4 pb-5'>
@@ -87,7 +79,7 @@ const CardComponent = ({ data, nextPage, serviceName, selectedService, selecting
                     ))}
                 </div>
                 <div className='flex justify-center pt-10 md:pt-0 md:justify-end'>
-                    <Button type="primary" className=" px-10  bg-green rounded-full" onClick={nextPage}>Nächster</Button>
+                    <Button type="primary" className=" px-10  bg-green rounded-full customeButtons" onClick={nextPage}>Nächster</Button>
                 </div>
             </div>
 

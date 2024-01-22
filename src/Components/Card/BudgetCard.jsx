@@ -21,8 +21,8 @@ const BudgetCard = ({ budget, bill }) => {
             </div>
             <div className="  px-1 py-2 text-left">
                 <h3 className="text-green font-bold text-[.8rem] my-5">Gesamtbetrag des Budgets</h3>
-                <p className="text-gray-600 font-medium text-sm py-2"> ${bill}.00</p>
-                <p className="text-gray-600 font-medium text-sm" style={{ color: bill > budget ? "red" :"" }}> ${budget}.00</p>
+                <p className="text-gray-600 font-medium text-sm py-2"> €{bill}.00</p>
+                <p className="text-gray-600 font-medium text-sm" style={{ color: bill > budget ? "red" :"" }}> €{budget}.00</p>
             </div>
 
         </div>

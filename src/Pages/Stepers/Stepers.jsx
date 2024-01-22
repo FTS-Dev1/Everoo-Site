@@ -31,14 +31,15 @@ const { Step } = Steps;
 const Stepers = () => {
 
     const [current, setCurrent] = useState(0);
-    const [activeSteps, setActiveSteps] = useState([])
+    const [activeSteps, setActiveSteps] = useState([]);
 
-    const [eventData, setEventData] = useState([])
-    const [rangeData, setRangeData] = useState([])
+    const [eventData, setEventData] = useState([]);
+    const [rangeData, setRangeData] = useState([]);
 
-    const [selectedEvent, setSelectedEvent] = useState(null)
-    const [selectedLocation, setSelectedLocation] = useState(null)
-    const [selectedRange, setSelectedRange] = useState(null)
+    const [selectedEvent, setSelectedEvent] = useState(null);
+    const [selectedLocation, setSelectedLocation] = useState(null);
+    console.log("---------------------------->", selectedLocation);
+    const [selectedRange, setSelectedRange] = useState(null);
 
     const [bill, setBill] = useState(0);
 
@@ -108,7 +109,21 @@ const Stepers = () => {
     }
     const selectingLocation = (id) => {
         let findLocation = selectedEvent.cities.find(city => city?._id == id)
-        setSelectedLocation(findLocation)
+        setSelectedLocation(findLocation);
+        setSelectedServices({
+            Catering: null,
+            Location: null,
+            Beverage: null,
+            Shuttle: null,
+            Staff: null,
+            Ausstattung: null,
+            Hotelmanagement: null,
+            Prasente: null,
+            Veranstaltungstechnik: null,
+            Eventmodule: null,
+            Dekoration: null,
+        });
+        setCurrent(0)
     }
     const selectingRange = (id) => {
         let findRange = rangeData.find(range => range?._id == id)
@@ -126,6 +141,7 @@ const Stepers = () => {
             Eventmodule: null,
             Dekoration: null,
         })
+        setCurrent(0)
     }
 
     const selectingService = (id, data) => {
@@ -213,67 +229,67 @@ const Stepers = () => {
             title: 'Standort',
             // icon: <img src={location} className=' border-2 rounded-full border-grey bg-white' alt="" width={40} height={50} />,
             icon: <div className=' border-2 rounded-full border-grey bg-white p-1'><FaLocationDot color='#566476' /></div>,
-            content: <CardComponent data={selectedEvent?.cities[0]["Location"]} nextPage={nextPage} selectedService={selectedServices["Location"]} selectingService={selectingService} serviceName="Location" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
+            content: <CardComponent data={selectedLocation && selectedLocation["Location"]} nextPage={nextPage} selectedService={selectedServices["Location"]} selectingService={selectingService} serviceName="Location" bill={bill} formData={formData} selectedEvent={selectedEvent} selectingLocation={selectingLocation} selectedLocation={selectedLocation} selectedRange={selectedRange} rangeData={rangeData} selectingRange={selectingRange} />,
         },
         {
             id: "Catering",
             title: 'Verpflegung',
             icon: <img src={catering2} alt="" width={40} height={50} />,
-            content: <CardComponent data={selectedEvent?.cities[0]["Catering"]} nextPage={nextPage} selectedService={selectedServices["Catering"]} selectingService={selectingService} serviceName="Catering" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
+            content: <CardComponent data={selectedLocation && selectedLocation["Catering"]} nextPage={nextPage} selectedService={selectedServices["Catering"]} selectingService={selectingService} serviceName="Catering" bill={bill} formData={formData} selectedEvent={selectedEvent} selectingLocation={selectingLocation} selectedLocation={selectedLocation} selectedRange={selectedRange} rangeData={rangeData} selectingRange={selectingRange} />,
         },
         {
             id: "Beverage",
             title: 'Getränk',
             icon: <img src={beverage} alt="" width={40} />,
-            content: <CardComponent data={selectedEvent?.cities[0]["Beverage"]} nextPage={nextPage} selectedService={selectedServices["Beverage"]} selectingService={selectingService} serviceName="Beverage" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
+            content: <CardComponent data={selectedLocation && selectedLocation["Beverage"]} nextPage={nextPage} selectedService={selectedServices["Beverage"]} selectingService={selectingService} serviceName="Beverage" bill={bill} formData={formData} selectedEvent={selectedEvent} selectingLocation={selectingLocation} selectedLocation={selectedLocation} selectedRange={selectedRange} rangeData={rangeData} selectingRange={selectingRange} />,
         },
         {
             id: "Staff",
             title: 'Personal',
             icon: <img src={staff} alt="" width={40} />,
-            content: <CardComponent data={selectedEvent?.cities[0]["Staff"]} nextPage={nextPage} selectedService={selectedServices["Staff"]} selectingService={selectingService} serviceName="Staff" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
+            content: <CardComponent data={selectedLocation && selectedLocation["Staff"]} nextPage={nextPage} selectedService={selectedServices["Staff"]} selectingService={selectingService} serviceName="Staff" bill={bill} formData={formData} selectedEvent={selectedEvent} selectingLocation={selectingLocation} selectedLocation={selectedLocation} selectedRange={selectedRange} rangeData={rangeData} selectingRange={selectingRange} />,
         },
         {
             id: "Ausstattung",
             title: 'Ausstattung',
             icon: <img src={ausatting} alt="" width={40} />,
-            content: <CardComponent data={selectedEvent?.cities[0]["Ausstattung"]} nextPage={nextPage} selectedService={selectedServices["Ausstattung"]} selectingService={selectingService} serviceName="Ausstattung" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
+            content: <CardComponent data={selectedLocation && selectedLocation["Ausstattung"]} nextPage={nextPage} selectedService={selectedServices["Ausstattung"]} selectingService={selectingService} serviceName="Ausstattung" bill={bill} formData={formData} selectedEvent={selectedEvent} selectingLocation={selectingLocation} selectedLocation={selectedLocation} selectedRange={selectedRange} rangeData={rangeData} selectingRange={selectingRange} />,
         },
         {
             id: "Shuttle",
             title: 'Zubringerdienst',
             icon: <img src={shuttle} alt="" width={40} />,
-            content: <CardComponent data={selectedEvent?.cities[0]["Shuttle"]} nextPage={nextPage} selectedService={selectedServices["Shuttle"]} selectingService={selectingService} serviceName="Shuttle" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
+            content: <CardComponent data={selectedLocation && selectedLocation["Shuttle"]} nextPage={nextPage} selectedService={selectedServices["Shuttle"]} selectingService={selectingService} serviceName="Shuttle" bill={bill} formData={formData} selectedEvent={selectedEvent} selectingLocation={selectingLocation} selectedLocation={selectedLocation} selectedRange={selectedRange} rangeData={rangeData} selectingRange={selectingRange} />,
         },
         {
             id: "Hotelmanagement",
             title: 'Hotel Management',
             icon: <img src={hotelService} alt="" width={40} />,
-            content: <CardComponent data={selectedEvent?.cities[0]["Hotelmanagement"]} nextPage={nextPage} selectedService={selectedServices["Hotelmanagement"]} selectingService={selectingService} serviceName="Hotelmanagement" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
+            content: <CardComponent data={selectedLocation && selectedLocation["Hotelmanagement"]} nextPage={nextPage} selectedService={selectedServices["Hotelmanagement"]} selectingService={selectingService} serviceName="Hotelmanagement" bill={bill} formData={formData} selectedEvent={selectedEvent} selectingLocation={selectingLocation} selectedLocation={selectedLocation} selectedRange={selectedRange} rangeData={rangeData} selectingRange={selectingRange} />,
         },
         {
             id: "Prasente",
             title: 'Gegenwart',
             icon: <img src={hotelService} alt="" width={40} />,
-            content: <CardComponent data={selectedEvent?.cities[0]["Prasente"]} nextPage={nextPage} selectedService={selectedServices["Prasente"]} selectingService={selectingService} serviceName="Prasente" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
+            content: <CardComponent data={selectedLocation && selectedLocation["Prasente"]} nextPage={nextPage} selectedService={selectedServices["Prasente"]} selectingService={selectingService} serviceName="Prasente" bill={bill} formData={formData} selectedEvent={selectedEvent} selectingLocation={selectingLocation} selectedLocation={selectedLocation} selectedRange={selectedRange} rangeData={rangeData} selectingRange={selectingRange} />,
         },
         {
             id: "Veranstaltungstechnik",
             title: 'Veranstaltungstechnik',
             icon: <img src={eventTech} alt="" width={40} />,
-            content: <CardComponent data={selectedEvent?.cities[0]["Veranstaltungstechnik"]} nextPage={nextPage} selectedService={selectedServices["Veranstaltungstechnik"]} selectingService={selectingService} serviceName="Veranstaltungstechnik" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
+            content: <CardComponent data={selectedLocation && selectedLocation["Veranstaltungstechnik"]} nextPage={nextPage} selectedService={selectedServices["Veranstaltungstechnik"]} selectingService={selectingService} serviceName="Veranstaltungstechnik" bill={bill} formData={formData} selectedEvent={selectedEvent} selectingLocation={selectingLocation} selectedLocation={selectedLocation} selectedRange={selectedRange} rangeData={rangeData} selectingRange={selectingRange} />,
         },
         {
             id: "Eventmodule",
             title: 'EreignisBaustein',
             icon: <img src={eventModule} alt="" width={40} />,
-            content: <CardComponent data={selectedEvent?.cities[0]["Eventmodule"]} nextPage={nextPage} selectedService={selectedServices["Eventmodule"]} selectingService={selectingService} serviceName="Eventmodule" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
+            content: <CardComponent data={selectedLocation && selectedLocation["Eventmodule"]} nextPage={nextPage} selectedService={selectedServices["Eventmodule"]} selectingService={selectingService} serviceName="Eventmodule" bill={bill} formData={formData} selectedEvent={selectedEvent} selectingLocation={selectingLocation} selectedLocation={selectedLocation} selectedRange={selectedRange} rangeData={rangeData} selectingRange={selectingRange} />,
         },
         {
             id: "Dekoration",
             title: 'Dekoration',
             icon: <img src={decoration} alt="" width={40} />,
-            content: <CardComponent data={selectedEvent?.cities[0]["Dekoration"]} nextPage={nextPage} selectedService={selectedServices["Dekoration"]} selectingService={selectingService} serviceName="Dekoration" bill={bill} formData={formData} selectedEvent={selectedEvent} selectedLocation={selectedLocation} selectedRange={selectedRange} />,
+            content: <CardComponent data={selectedLocation && selectedLocation["Dekoration"]} nextPage={nextPage} selectedService={selectedServices["Dekoration"]} selectingService={selectingService} serviceName="Dekoration" bill={bill} formData={formData} selectedEvent={selectedEvent} selectingLocation={selectingLocation} selectedLocation={selectedLocation} selectedRange={selectedRange} rangeData={rangeData} selectingRange={selectingRange} />,
         },
         {
             title: 'Personal Info',
@@ -364,19 +380,19 @@ const Stepers = () => {
 
     useEffect(() => {
         // if (!budgetNotification) {
-            if (formData.budget < bill) {
-                toast.warn("Außerhalb des Budgets")
-                setBudgetNotification(true)
-            }
+        if (formData.budget < bill) {
+            toast.warn("Außerhalb des Budgets")
+            setBudgetNotification(true)
+        }
         // }
     }, [formData.budget, bill])
 
     return (
         <>
-            <div className="xl:max-w-8xl max-w-7xl md:mx-auto md:pt-6 ">
+            <div className="xl:max-w-8xl max-w-7xl md:mx-auto">
                 <NavBar />
                 <div className=''>
-                    <h1 className='text-green text-4xl font-bold '>Event planner-everoo</h1>
+                    <h1 className='text-green text-4xl font-bold '>Event planer-everoo</h1>
                 </div>
 
                 <div className='py-14'>

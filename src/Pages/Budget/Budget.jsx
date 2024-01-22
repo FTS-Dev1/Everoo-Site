@@ -4,6 +4,7 @@ import { Input, Select, Button, Slider } from 'antd';
 import eventIcon from '../../Assets/svgs/eventIcon.svg'
 import time from '../../Assets/svgs/time.svg'
 import guest from '../../Assets/svgs/guest.svg'
+import { IoLogoEuro } from "react-icons/io";
 import { DollarOutlined, EnvironmentOutlined } from '@ant-design/icons';
 import BudgetCard from '../../Components/Card/BudgetCard';
 import axios from 'axios';
@@ -44,7 +45,7 @@ const BudgetForm = ({ allEvents, allRanges, formData, enteringData, selectedEven
                     value={selectedEvent?._id}
                 />
                 <Input
-                    prefix={<img src={eventIcon} width={16} className='mr-3' />}
+                    prefix={<IoLogoEuro size={15} color='#5E9894' />}
                     type="number"
                     placeholder="Budget eingeben"
                     className="bg-white shadow-md py-5 w-50"
@@ -106,7 +107,7 @@ const BudgetForm = ({ allEvents, allRanges, formData, enteringData, selectedEven
             </div>
             <div className='flex flex-col lg:flex-row items-center justify-between pb-5 px-5 lg:px-0'>
                 <BudgetCard budget={formData?.budget} bill={bill} />
-                <Button type="primary" className="px-10 bg-green rounded-full mt-4 lg:mt-0" onClick={goNextPage}>
+                <Button type="primary" className="px-10 bg-green rounded-full mt-4 lg:mt-0 customeButtons" onClick={goNextPage}>
                     Nächster
                 </Button>
             </div>

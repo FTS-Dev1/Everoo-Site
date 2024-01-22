@@ -16,7 +16,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className="flex items-center justify-between p-4">
+    <header className="flex items-center justify-between px-4">
       <div className="flex items-center space-x-10">
         <Logo width={220} />
       </div>
@@ -45,12 +45,12 @@ const Navbar = () => {
       <div className="hidden lg:flex-1 lg:flex lg:items-center lg:justify-center">
         <Menu
           mode="horizontal"
-          className="text-Dblack text-lg font-medium justify-center"
+          className="text-Dblack text-lg font-medium justify-center customeFontFamily"
         >
-          <Menu.Item key="1">Events & Service</Menu.Item>
-          <Menu.Item key="2">Eventplaner</Menu.Item>
-          <Menu.Item key="3">Unternehmen</Menu.Item>
-          <Menu.Item key="5">Kontakt</Menu.Item>
+          <Menu.Item key="2" onClick={()=> window.location.href = "https://sr.w-lu.de"}>Home</Menu.Item>
+          <Menu.Item key="1" onClick={()=> window.location.href = "https://sr.w-lu.de/firmenevent/"}>Events & Service</Menu.Item>
+          <Menu.Item key="3" onClick={()=> window.location.href = "https://sr.w-lu.de/unternehmen/#ueber-uns"}>Unternehmen</Menu.Item>
+          <Menu.Item key="5" onClick={()=> window.location.href = "https://sr.w-lu.de/kontakt/#kontaktformular"}>Kontakt</Menu.Item>
         </Menu>
       </div>
 
@@ -87,7 +87,7 @@ const Navbar = () => {
       )}
 
       <div className="hidden lg:flex items-center space-x-4">
-        <Button type="primary" className="px-10 bg-green rounded-full">
+        <Button type="primary" className="px-10 bg-green rounded-full customeButtons">
           Eventplaner
         </Button>
       </div>

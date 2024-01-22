@@ -3,7 +3,7 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
-
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,800;1,6..12,400;1,6..12,500;1,6..12,600;1,6..12,700;1,6..12,800&display=swap');
 
 body {
   margin: 0;
@@ -26,12 +26,17 @@ body {
     }
   }
 
-  .ant-menu-item:hover::after{
-    border-bottom-color:#2c9a94 !important
+  .ant-menu-item:hover::after {
+    border-bottom-color: #2c9a94 !important
   }
 
 }
 
 code {
   font-family: 'Montserrat', sans-serif,
+}
+
+.customeButtons {
+  font-family: 'Nunito Sans', sans-serif !important;
+  font-weight: bold;
 }

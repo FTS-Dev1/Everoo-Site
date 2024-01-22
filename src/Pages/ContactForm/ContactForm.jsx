@@ -97,7 +97,7 @@ const ContactForm = ({ allEvents, formData, enteringData, selectedEvent, selecti
             </div>
             <div className='flex flex-col lg:flex-row items-center justify-between pb-5 px-5 lg:px-0'>
                 <BudgetCard budget={formData?.budget} bill={bill} />
-                <Button loading={loading} type="primary" className=" px-10  bg-green rounded-full mt-4 lg:mt-0" onClick={submitForm}>Einreichen</Button>
+                <Button loading={loading} type="primary" className=" px-10  bg-green rounded-full mt-4 lg:mt-0 customeButtons" onClick={submitForm}>Einreichen</Button>
             </div>
 
         </div>
