@@ -28,7 +28,7 @@ const CardComponent = ({ data, nextPage, serviceName, selectedService, selecting
                             }}
                         >
                             <Space>
-                                Stadt
+                                Ort
                                 <DownOutlined />
                             </Space>
                         </Dropdown>

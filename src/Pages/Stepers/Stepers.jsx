@@ -292,7 +292,7 @@ const Stepers = () => {
             content: <CardComponent data={selectedLocation && selectedLocation["Dekoration"]} nextPage={nextPage} selectedService={selectedServices["Dekoration"]} selectingService={selectingService} serviceName="Dekoration" bill={bill} formData={formData} selectedEvent={selectedEvent} selectingLocation={selectingLocation} selectedLocation={selectedLocation} selectedRange={selectedRange} rangeData={rangeData} selectingRange={selectingRange} />,
         },
         {
-            title: 'Personal Info',
+            title: 'Kontaktdaten',
             // icon: <img src={personInfo} className=' border-2 rounded-full border-grey bg-white' alt="" width={40} height={50} />,
             icon: <div className=' border-2 rounded-full border-grey bg-white p-1'><BsFillPersonPlusFill color='#566476' /></div>,
             content: <ContactForm allEvents={eventData} selectedEvent={selectedEvent} setSelectedEvent={setSelectedEvent} formData={formData} enteringData={enteringData} selectingEvent={selectingEvent} nextPage={nextPage} submitForm={submitForm} bill={bill} loading={loading} />,
@@ -392,7 +392,7 @@ const Stepers = () => {
             <div className="xl:max-w-8xl max-w-7xl md:mx-auto">
                 <NavBar />
                 <div className=''>
-                    <h1 className='text-green text-4xl font-bold '>Event planer-everoo</h1>
+                    <h1 className='text-green text-4xl font-bold '>Everoo Eventplaner</h1>
                 </div>
 
                 <div className='py-14'>

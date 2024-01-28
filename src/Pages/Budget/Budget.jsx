@@ -36,7 +36,7 @@ const BudgetForm = ({ allEvents, allRanges, formData, enteringData, selectedEven
         <div className="container  mt-8 px-5 lg:px-0">
             <div className='flex items-center mb-4'>
                 <img src={eventIcon} alt="" width={20} />
-                <h1 className="text-xl  text-left pl-3">Art des Ereignisses</h1>
+                <h1 className="text-xl  text-left pl-3">Event-Art</h1>
             </div>
             <div className="pb-7 flex flex-col space-y-4 lg:space-y-0 lg:flex-row lg:space-x-12 lg:items-start">
                 <Select className="bg-white shadow-md rounded-md w-full text-left h-[64px]" placeholder="Ereignis wählen" prefix={<EnvironmentOutlined />}
